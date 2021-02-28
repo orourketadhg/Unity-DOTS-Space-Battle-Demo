@@ -1,3 +1,5 @@
 # GE2_Assignment
  
-![Intro](https://i.imgur.com/jMOcmJv.png)
+![Legend](https://i.imgur.com/PSn9xuc.png)
+![Intro](https://i.imgur.com/HGqEm1a.png)
+![Battle](https://i.imgur.com/jMOcmJv.png)
