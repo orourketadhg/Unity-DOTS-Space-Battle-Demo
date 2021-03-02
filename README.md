@@ -10,6 +10,12 @@ Class Group: DT228
 
 This project will utilise Unitys Data Oriented Technology Stack (DOTS) to create a simulated space battle. This project will use several steering behaviours to control the movement of space ships in the battle. This project will use several additional DOTS technologies to improve performace, including DOTS Physics to simulate physics on the spaceship entities, and the Universal Rendering Pipeline (URP) for additional visual effects.
 
+The project will have the ability to switch between several different camera viewpoints:
+* Birds eye view
+* panning view
+* follow random ship
+* free movement
+
 ## Story Board
  
 ![Legend](https://i.imgur.com/PSn9xuc.png)
@@ -22,4 +28,4 @@ The simulation will start out in empty space with no life around. following this
 
 ![Battle](https://i.imgur.com/jMOcmJv.png)
 
-As the battle occurs each space ship will be able locked onto a specfic target that they will have to destroy. when that target is destroyed they will find another spaceship to attack. The battle ends when one force loses all their ships.
+As the battle occurs each space ship will be able locked onto a specfic target that they will have to destroy. when that target is destroyed they will find another spaceship to attack. The battle ends when one force loses all their ships. After this point the last ship(s) will space jump out of view, and the scene will reload starting again.
