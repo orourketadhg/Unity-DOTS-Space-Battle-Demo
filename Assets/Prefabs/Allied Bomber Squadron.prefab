@@ -1,0 +1,235 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3741406693916904696
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2319873968703611850}
+  - component: {fileID: 455792062584870921}
+  m_Layer: 0
+  m_Name: Allied Bomber Squadron
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2319873968703611850
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3741406693916904696}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1457666710608434057}
+  - {fileID: 5157854149088294627}
+  - {fileID: 3113700775037977773}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &455792062584870921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3741406693916904696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea7d7495833204790ba1d3a8755397f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ConversionMode: 0
+--- !u!1001 &431692025432379501
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2319873968703611850}
+    m_Modifications:
+    - target: {fileID: 4785581037699376782, guid: b1fe60d5d97e90142b5f695cce4a5447, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785581037699376782, guid: b1fe60d5d97e90142b5f695cce4a5447, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785581037699376782, guid: b1fe60d5d97e90142b5f695cce4a5447, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785581037699376782, guid: b1fe60d5d97e90142b5f695cce4a5447, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785581037699376782, guid: b1fe60d5d97e90142b5f695cce4a5447, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785581037699376782, guid: b1fe60d5d97e90142b5f695cce4a5447, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.000000021855694
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785581037699376782, guid: b1fe60d5d97e90142b5f695cce4a5447, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785581037699376782, guid: b1fe60d5d97e90142b5f695cce4a5447, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785581037699376782, guid: b1fe60d5d97e90142b5f695cce4a5447, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785581037699376782, guid: b1fe60d5d97e90142b5f695cce4a5447, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785581037699376782, guid: b1fe60d5d97e90142b5f695cce4a5447, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785581037699545774, guid: b1fe60d5d97e90142b5f695cce4a5447, type: 3}
+      propertyPath: m_Name
+      value: Allied Bomber - Left
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b1fe60d5d97e90142b5f695cce4a5447, type: 3}
+--- !u!4 &5157854149088294627 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4785581037699376782, guid: b1fe60d5d97e90142b5f695cce4a5447, type: 3}
+  m_PrefabInstance: {fileID: 431692025432379501}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6220421884678305031
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2319873968703611850}
+    m_Modifications:
+    - target: {fileID: 4785581037699376782, guid: b1fe60d5d97e90142b5f695cce4a5447, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785581037699376782, guid: b1fe60d5d97e90142b5f695cce4a5447, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785581037699376782, guid: b1fe60d5d97e90142b5f695cce4a5447, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785581037699376782, guid: b1fe60d5d97e90142b5f695cce4a5447, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785581037699376782, guid: b1fe60d5d97e90142b5f695cce4a5447, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785581037699376782, guid: b1fe60d5d97e90142b5f695cce4a5447, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.000000021855694
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785581037699376782, guid: b1fe60d5d97e90142b5f695cce4a5447, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785581037699376782, guid: b1fe60d5d97e90142b5f695cce4a5447, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785581037699376782, guid: b1fe60d5d97e90142b5f695cce4a5447, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785581037699376782, guid: b1fe60d5d97e90142b5f695cce4a5447, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785581037699376782, guid: b1fe60d5d97e90142b5f695cce4a5447, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785581037699545774, guid: b1fe60d5d97e90142b5f695cce4a5447, type: 3}
+      propertyPath: m_Name
+      value: Allied Bomber - Squadron Leader
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b1fe60d5d97e90142b5f695cce4a5447, type: 3}
+--- !u!4 &1457666710608434057 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4785581037699376782, guid: b1fe60d5d97e90142b5f695cce4a5447, type: 3}
+  m_PrefabInstance: {fileID: 6220421884678305031}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7593028027204100643
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2319873968703611850}
+    m_Modifications:
+    - target: {fileID: 4785581037699376782, guid: b1fe60d5d97e90142b5f695cce4a5447, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785581037699376782, guid: b1fe60d5d97e90142b5f695cce4a5447, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785581037699376782, guid: b1fe60d5d97e90142b5f695cce4a5447, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785581037699376782, guid: b1fe60d5d97e90142b5f695cce4a5447, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785581037699376782, guid: b1fe60d5d97e90142b5f695cce4a5447, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785581037699376782, guid: b1fe60d5d97e90142b5f695cce4a5447, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.000000021855694
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785581037699376782, guid: b1fe60d5d97e90142b5f695cce4a5447, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785581037699376782, guid: b1fe60d5d97e90142b5f695cce4a5447, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785581037699376782, guid: b1fe60d5d97e90142b5f695cce4a5447, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785581037699376782, guid: b1fe60d5d97e90142b5f695cce4a5447, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785581037699376782, guid: b1fe60d5d97e90142b5f695cce4a5447, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785581037699545774, guid: b1fe60d5d97e90142b5f695cce4a5447, type: 3}
+      propertyPath: m_Name
+      value: Allied Bomber - Right
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b1fe60d5d97e90142b5f695cce4a5447, type: 3}
+--- !u!4 &3113700775037977773 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4785581037699376782, guid: b1fe60d5d97e90142b5f695cce4a5447, type: 3}
+  m_PrefabInstance: {fileID: 7593028027204100643}
+  m_PrefabAsset: {fileID: 0}
