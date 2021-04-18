@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2630749136111194719}
   - component: {fileID: 7996804815801121193}
   - component: {fileID: 1366124751670427950}
+  - component: {fileID: -8973750897368022781}
   - component: {fileID: -677151292042973255}
   m_Layer: 0
   m_Name: Allied Laser Blast
@@ -113,7 +114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MotionType: 0
   m_Smoothing: 0
-  m_Mass: 1
+  m_Mass: 0.001
   m_LinearDamping: 0.01
   m_AngularDamping: 0.05
   m_InitialLinearVelocity:
@@ -198,7 +199,7 @@ MonoBehaviour:
     m_Template: {fileID: 0}
     m_CollisionResponse:
       m_Override: 0
-      m_Value: 0
+      m_Value: 3
     m_Friction:
       m_Override: 0
       m_Value:
@@ -302,6 +303,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8274e162648848f79825f1dc814d3a77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Value: 1
+--- !u!114 &-8973750897368022781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7650458531318592833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b9a96b0bcf43dabdf61008c4020214, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Value: 1

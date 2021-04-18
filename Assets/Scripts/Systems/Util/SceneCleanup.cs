@@ -1,4 +1,5 @@
 ﻿using Ie.TUDublin.GE2.Components.Spaceship;
+using Ie.TUDublin.GE2.Components.Tags;
 using Unity.Entities;
 
 namespace Ie.TUDublin.GE2.Systems.Util {
@@ -18,10 +19,28 @@ namespace Ie.TUDublin.GE2.Systems.Util {
             float timeElapsed = (float) Time.ElapsedTime;
             
             Entities
-                .WithName("BulletCleanup")
+                .WithName("DeleteTagCleanup")
+                .WithBurst()
+                .WithAll<DeleteTag>()
+                .ForEach((Entity entity, int entityInQueryIndex) => {
+                    ecb.DestroyEntity(entityInQueryIndex, entity);
+                }).ScheduleParallel();
+            
+            Entities
+                .WithName("BulletLifetimeCleanup")
                 .WithBurst()
                 .ForEach((Entity entity, int entityInQueryIndex, ref ProjectileSpawnData spawnData) => {
                     if (spawnData.DoDespawn == 1 && timeElapsed >= spawnData.SpawnTime + spawnData.ProjectileLifetime) {
+                        ecb.DestroyEntity(entityInQueryIndex, entity);
+                    }
+                }).ScheduleParallel();
+
+            Entities
+                .WithName("BulletHealthCleanup")
+                .WithBurst()
+                .WithAll<ProjectileSpawnData>()
+                .ForEach((Entity entity, int entityInQueryIndex, in HealthData healthData) => {
+                    if (healthData.Value <= 0) {
                         ecb.DestroyEntity(entityInQueryIndex, entity);
                     }
                 }).ScheduleParallel();

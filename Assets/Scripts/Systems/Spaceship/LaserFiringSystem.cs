@@ -24,9 +24,9 @@ namespace Ie.TUDublin.GE2.Systems.Spaceship {
                 .WithBurst()
                 .ForEach((Entity entity, int entityInQueryIndex, ref LaserGunInternalSettingsData gunInternalSettingsData, in LaserGunSettingsData gunSettingsData, in LocalToWorld origin) => {
 
-                    if (gunInternalSettingsData.IsFiringEnabled == 0) {
-                        return;
-                    }
+                    // if (gunInternalSettingsData.IsFiringEnabled == 0) {
+                    //     return;
+                    // }
                     
                     if (time >= gunInternalSettingsData.TimeOfLastFire + gunSettingsData.FiringRate) {
                         gunInternalSettingsData.TimeOfLastFire = time;
