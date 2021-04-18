@@ -447,6 +447,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 12.49, y: 90, z: 0}
+--- !u!1 &1374326741 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2286354951625292640, guid: e147db9c3184ec34c9f4d04902ffc244, type: 3}
+  m_PrefabInstance: {fileID: 1768704137}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1374326749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1374326741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8274e162648848f79825f1dc814d3a77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Value: 25
+--- !u!114 &1374326750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1374326741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b9a96b0bcf43dabdf61008c4020214, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Value: 25
 --- !u!1 &1395531431
 GameObject:
   m_ObjectHideFlags: 0
@@ -522,7 +553,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2286354951625189184, guid: e147db9c3184ec34c9f4d04902ffc244, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 1.003
       objectReference: {fileID: 0}
     - target: {fileID: 2286354951625189184, guid: e147db9c3184ec34c9f4d04902ffc244, type: 3}
       propertyPath: m_LocalPosition.y
@@ -566,11 +597,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5200637335135070889, guid: e147db9c3184ec34c9f4d04902ffc244, type: 3}
       propertyPath: firingRate
-      value: 1
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 5200637335135070889, guid: e147db9c3184ec34c9f4d04902ffc244, type: 3}
       propertyPath: laserSpeed
-      value: 0.25
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5200637335135070889, guid: e147db9c3184ec34c9f4d04902ffc244, type: 3}
       propertyPath: laserRotation.x
@@ -579,14 +610,18 @@ PrefabInstance:
     - target: {fileID: 5200637335135070889, guid: e147db9c3184ec34c9f4d04902ffc244, type: 3}
       propertyPath: laserRotation.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5200637335135070889, guid: e147db9c3184ec34c9f4d04902ffc244, type: 3}
+      propertyPath: projectileLifetime
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6515275463745163746, guid: e147db9c3184ec34c9f4d04902ffc244, type: 3}
       propertyPath: firingRate
-      value: 1
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 6515275463745163746, guid: e147db9c3184ec34c9f4d04902ffc244, type: 3}
       propertyPath: laserSpeed
-      value: 0.25
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6515275463745163746, guid: e147db9c3184ec34c9f4d04902ffc244, type: 3}
       propertyPath: laserRotation.x
@@ -595,6 +630,10 @@ PrefabInstance:
     - target: {fileID: 6515275463745163746, guid: e147db9c3184ec34c9f4d04902ffc244, type: 3}
       propertyPath: laserRotation.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6515275463745163746, guid: e147db9c3184ec34c9f4d04902ffc244, type: 3}
+      propertyPath: projectileLifetime
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e147db9c3184ec34c9f4d04902ffc244, type: 3}

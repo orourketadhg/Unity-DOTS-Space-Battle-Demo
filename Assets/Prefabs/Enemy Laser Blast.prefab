@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3252076506863510759}
   - component: {fileID: 8587195222799310993}
   - component: {fileID: 495228064952756270}
+  - component: {fileID: -6416190567700103499}
   m_Layer: 0
   m_Name: Enemy Laser Blast
   m_TagString: Untagged
@@ -31,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 1998993681712407495}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.005, y: 0.025, z: 0.005}
+  m_LocalScale: {x: 0.005, y: 0.005, z: 0.005}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -43,7 +44,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1998993681712407495}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &5476237588708623413
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -304,3 +305,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Value: 1
+--- !u!114 &-6416190567700103499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1998993681712407495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 734b9dff5fd64ed59381d25cdc0298bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DoDespawn: 0
+  SpawnTime: 0
+  ProjectileLifetime: 0

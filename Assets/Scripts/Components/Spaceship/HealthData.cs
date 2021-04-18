@@ -5,10 +5,10 @@ namespace Ie.TUDublin.GE2.Components.Spaceship {
 
     [GenerateAuthoringComponent]
     public struct HealthData : IComponentData {
-        private int _value;
+        public int Value;
 
         public void TakeDamage(int damage) {
-            _value = math.clamp(_value - damage, 0, _value);
+            Value = math.clamp(Value - damage, 0, Value);
         }
     }
 

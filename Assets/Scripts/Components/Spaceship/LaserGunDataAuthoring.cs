@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Unity.Entities;
-using Unity.Mathematics;
 using UnityEngine;
 
 namespace Ie.TUDublin.GE2.Components.Spaceship {
@@ -8,17 +7,16 @@ namespace Ie.TUDublin.GE2.Components.Spaceship {
     public class LaserGunDataAuthoring : MonoBehaviour, IConvertGameObjectToEntity, IDeclareReferencedPrefabs {
 
         [SerializeField] private GameObject laserPrefab;
-        [SerializeField] private float3 laserRotation;
         [SerializeField] private float laserSpeed;
+        [SerializeField] private float projectileLifetime;
         [SerializeField] [Min(0)] private float firingRate;
 
         public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem) {
             dstManager.AddComponentData(entity, new LaserGunSettingsData() {
                 LaserPrefab = conversionSystem.GetPrimaryEntity(laserPrefab),
                 FiringRate = firingRate,
-                LaserRotation = laserRotation,
                 ProjectileSpeed = laserSpeed,
-                
+                ProjectileLifetime = projectileLifetime
             });
 
             dstManager.AddComponentData(entity, new LaserGunInternalSettingsData() {
@@ -33,8 +31,8 @@ namespace Ie.TUDublin.GE2.Components.Spaceship {
     public struct LaserGunSettingsData : IComponentData {
         public float FiringRate;
         public Entity LaserPrefab;
-        public float3 LaserRotation;
         public float ProjectileSpeed;
+        public float ProjectileLifetime;
     }
 
     public struct LaserGunInternalSettingsData : IComponentData {
