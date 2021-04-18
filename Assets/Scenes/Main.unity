@@ -568,6 +568,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Intersepter
       objectReference: {fileID: 0}
+    - target: {fileID: 6915054642752572193, guid: e147db9c3184ec34c9f4d04902ffc244, type: 3}
+      propertyPath: m_Material.m_CollisionResponse.m_Value
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e147db9c3184ec34c9f4d04902ffc244, type: 3}
 --- !u!1 &2049337863
@@ -653,6 +657,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 75522280200623447, guid: 477890b1c071a8f4bba8f1b1cf33c268, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1109822336028181883, guid: 477890b1c071a8f4bba8f1b1cf33c268, type: 3}
+      propertyPath: m_Material.m_CollisionResponse.m_Value
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7714534163534889146, guid: 477890b1c071a8f4bba8f1b1cf33c268, type: 3}

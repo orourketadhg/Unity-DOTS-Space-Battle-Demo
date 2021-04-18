@@ -28824,6 +28824,18 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &-5400264075780072132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2773558594374658281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35fa75b4d9224668b3032bbcf0003524, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4702064141268791365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29030,7 +29042,7 @@ MonoBehaviour:
         Tag07: 0
     m_SerializedVersion: 1
   m_SerializedVersion: 1
---- !u!114 &-5400264075780072132
+--- !u!114 &2973878243523897985
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -29039,7 +29051,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2773558594374658281}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35fa75b4d9224668b3032bbcf0003524, type: 3}
+  m_Script: {fileID: 11500000, guid: 78728fb7e2a743d3a9f5b4fd4a8d23d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &2773558594374692425

@@ -4,7 +4,7 @@ using Unity.Entities;
 
 namespace Ie.TUDublin.GE2.Systems.Util {
 
-    public class SceneCleanup : SystemBase {
+    public class SceneCleanupSystem : SystemBase {
 
         private EndSimulationEntityCommandBufferSystem _entityCommandBufferSystem;
         

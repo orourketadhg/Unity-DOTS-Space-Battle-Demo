@@ -14424,6 +14424,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35fa75b4d9224668b3032bbcf0003524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1374326749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2286354951625292640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8274e162648848f79825f1dc814d3a77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Value: 25
+--- !u!114 &1374326750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2286354951625292640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b9a96b0bcf43dabdf61008c4020214, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Value: 25
 --- !u!114 &351533272641279316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14438,7 +14464,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MotionType: 0
   m_Smoothing: 0
-  m_Mass: 1
+  m_Mass: 1000
   m_LinearDamping: 0.01
   m_AngularDamping: 0.05
   m_InitialLinearVelocity:
@@ -14523,7 +14549,7 @@ MonoBehaviour:
     m_Template: {fileID: 0}
     m_CollisionResponse:
       m_Override: 0
-      m_Value: 1
+      m_Value: 0
     m_Friction:
       m_Override: 0
       m_Value:
@@ -14630,7 +14656,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ConversionMode: 0
---- !u!114 &1374326749
+--- !u!114 &1836193727113505585
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14639,23 +14665,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2286354951625292640}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8274e162648848f79825f1dc814d3a77, type: 3}
+  m_Script: {fileID: 11500000, guid: 78728fb7e2a743d3a9f5b4fd4a8d23d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Value: 25
---- !u!114 &1374326750
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2286354951625292640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78b9a96b0bcf43dabdf61008c4020214, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Value: 25
 --- !u!1 &3892642196448878273
 GameObject:
   m_ObjectHideFlags: 0
@@ -19583,7 +19595,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 479bd969437eac5408b3df4220542837, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.6996633
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 479bd969437eac5408b3df4220542837, type: 3}
       propertyPath: m_LocalRotation.x
@@ -19591,7 +19603,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 479bd969437eac5408b3df4220542837, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.7144727
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 479bd969437eac5408b3df4220542837, type: 3}
       propertyPath: m_LocalRotation.z
@@ -19603,7 +19615,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 479bd969437eac5408b3df4220542837, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 91.2
+      value: 90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 479bd969437eac5408b3df4220542837, type: 3}
