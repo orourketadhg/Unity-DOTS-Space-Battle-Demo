@@ -1,4 +1,5 @@
 ﻿using Ie.TUDublin.GE2.Components.Spaceship;
+using Ie.TUDublin.GE2.Components.Steering;
 using Ie.TUDublin.GE2.Components.Tags;
 using Unity.Entities;
 
@@ -20,7 +21,7 @@ namespace Ie.TUDublin.GE2.Systems.Spaceship {
             Entities
                 .WithName("SpaceshipCleanup")
                 .WithBurst()
-                .WithAll<SpaceshipTag>()
+                .WithAll<SpaceshipData>()
                 .WithAny<AlliedTag, EnemyTag>()
                 .ForEach((Entity entity, int entityInQueryIndex, in HealthData healthData) => {
                     if (healthData.Value <= 0) {
