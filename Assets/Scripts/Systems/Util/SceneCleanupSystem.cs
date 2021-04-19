@@ -10,7 +10,6 @@ namespace Ie.TUDublin.GE2.Systems.Util {
         
         protected override void OnCreate() {
             _entityCommandBufferSystem = World.GetExistingSystem<EndSimulationEntityCommandBufferSystem>();
-            
         }
 
         protected override void OnUpdate() {

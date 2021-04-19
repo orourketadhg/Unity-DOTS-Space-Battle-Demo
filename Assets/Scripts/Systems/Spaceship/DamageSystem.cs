@@ -44,7 +44,7 @@ namespace Ie.TUDublin.GE2.Systems.Spaceship {
             Dependency = JobHandle.CombineDependencies(Dependency, collisionDamageJobHandle);
             
             _entityCommandBuffer.AddJobHandleForProducer(Dependency);
-
+            
         }
         
         
