@@ -50,8 +50,6 @@ namespace Ie.TUDublin.GE2.Systems.Steering {
                 var ship = spaceships[i];
                 var wander = wanderArray[i];
                 
-                
-                
                 // wander
                 
                 // pursue
@@ -68,16 +66,17 @@ namespace Ie.TUDublin.GE2.Systems.Steering {
 
         }
         
-        private float3 CalculateSeekForce(Translation position, PhysicsVelocity velocity, SpaceshipData spaceship, float3 target) {
+        private float3 CalculateSeekForce(in Translation position, in PhysicsVelocity velocity, in SpaceshipData spaceship, float3 target) {
             var desired = target - position.Value;
             desired = math.normalizesafe(desired);
             desired *= spaceship.MaxSpeed;
             return desired - velocity.Linear;
         }
 
-        private float3 CalculateWanderForce(ref Random random, ref JitterWanderData wander, Translation translation, Rotation rotation, float deltaTime) {
+        private float3 CalculateWanderForce(ref Random random, ref JitterWanderData wander, Translation translation, Rotation rotation) {
             var displacement = wander.Jitter * MathUtil.InsideUnitSphere(ref random) * deltaTime;
             wander.Target += displacement;
+            
             wander.Target = math.normalizesafe(wander.Target);
             wander.Target *= wander.Radius;
 
@@ -85,9 +84,18 @@ namespace Ie.TUDublin.GE2.Systems.Steering {
 
             var pos = translation.Value;
             var rot = rotation.Value;
-            var WorldTarget = ( rot * localTarget ) + pos;
-            
-            return 
+            var worldTarget = math.mul(rot, localTarget) + pos;
+
+            return ( worldTarget - pos ) * wander.Weight;
+        }
+
+        private float3 CalculatePursueForce(ref PursueData pursue, in Translation translation, in PhysicsVelocity velocity, in SpaceshipData spaceship) {
+            float dist = MathUtil.Float3Distance(spaceship.TargetPosition, translation.Value);
+            float time = dist / spaceship.MaxSpeed;
+
+            var target = spaceship.TargetPosition + ( velocity.Linear * time );
+
+            return CalculateSeekForce(in translation, in velocity, in spaceship, target);
         }
         
     }

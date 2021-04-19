@@ -1,4 +1,6 @@
-﻿using Unity.Burst;
+﻿using System.Numerics;
+using Unity.Burst;
+using Unity.Entities.UniversalDelegates;
 using Unity.Mathematics;
 
 namespace Ie.TUDublin.GE2.Util {
@@ -30,6 +32,16 @@ namespace Ie.TUDublin.GE2.Util {
             float z = math.cos(b);
             
             return new float3(x, y, z);
+        }
+
+        public static float Float3Distance(float3 v, float3 w) {
+            float x = math.pow(( v.x - w.x ), 2);
+            float y = math.pow(( v.y - w.y ), 2);
+            float z = math.pow(( v.z - w.z ), 2);
+
+            float a = math.sqrt(x + y + z);
+            
+            return math.abs(a);
         }
         
     }
