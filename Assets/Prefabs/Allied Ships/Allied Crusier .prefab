@@ -29576,6 +29576,19 @@ MonoBehaviour:
   laserSpeed: 1
   projectileLifetime: 5
   firingRate: 0.25
+--- !u!114 &-4716433234816426877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5380226125110603852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8274e162648848f79825f1dc814d3a77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Value: 0
 --- !u!114 &-946486719443226900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29588,6 +29601,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78728fb7e2a743d3a9f5b4fd4a8d23d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Target: {fileID: 0}
+  TargetPosition:
+    x: 0
+    y: 0
+    z: 0
+  MaxSpeed: 0
+--- !u!114 &745362041339798625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5380226125110603852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b9a96b0bcf43dabdf61008c4020214, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Value: 0
 --- !u!114 &4051031770205951528
 MonoBehaviour:
   m_ObjectHideFlags: 0

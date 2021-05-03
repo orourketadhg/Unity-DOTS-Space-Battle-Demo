@@ -13,7 +13,6 @@ namespace Ie.TUDublin.GE2.Systems.Steering {
 
             var randomArray = World.GetExistingSystem<RandomSystem>().RandomArray;
             float dt = Time.DeltaTime;
-            
         }
         
     }
