@@ -42,7 +42,6 @@ namespace Ie.TUDublin.GE2.Components.Spawning {
         public string name;
         public GameObject prefab;
         public int2 numberOfShips;
-        [Min(0)] public float spawnCheckRadius;
     }
 
     public struct ShipSpawningSettingsData : IComponentData {
