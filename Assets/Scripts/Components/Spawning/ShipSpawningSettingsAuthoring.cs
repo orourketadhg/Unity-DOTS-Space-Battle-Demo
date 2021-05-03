@@ -9,8 +9,9 @@ namespace Ie.TUDublin.GE2.Components.Spawning {
     public class ShipSpawningSettingsAuthoring : MonoBehaviour, IConvertGameObjectToEntity, IDeclareReferencedPrefabs {
 
         [SerializeField] private Vector3 position;
+        [SerializeField] private Vector3 rotation;
         [SerializeField] private Vector3 spawnArea;
-        [SerializeField] private int spawnAttempts; 
+        [SerializeField] private float shipCountMultiplier = 1; 
         
         [SerializeField] private List<ShipSettings> ships;
         
@@ -18,16 +19,16 @@ namespace Ie.TUDublin.GE2.Components.Spawning {
 
             dstManager.AddComponentData(entity, new ShipSpawningSettingsData() {
                 position = position,
+                rotation = rotation,
                 spawnArea = spawnArea,
-                spawnAttempts = spawnAttempts
+                shipCountMultiplier = shipCountMultiplier
             });
             
-            var shipBuffer = dstManager.AddBuffer<ShipSpawningPrefabElement>(entity);
+            var shipBuffer = dstManager.AddBuffer<ShipSpawnElement>(entity);
             foreach (var ship in ships) {
-                shipBuffer.Add(new ShipSpawningPrefabElement() {
+                shipBuffer.Add(new ShipSpawnElement() {
                     prefab = conversionSystem.GetPrimaryEntity(ship.prefab),
                     numberOfShips = ship.numberOfShips,
-                    spawnCheckRadius = ship.spawnCheckRadius
                 });
             }
 
@@ -40,20 +41,20 @@ namespace Ie.TUDublin.GE2.Components.Spawning {
     public class ShipSettings {
         public string name;
         public GameObject prefab;
-        [Min(0)] public Vector2 numberOfShips;
+        public int2 numberOfShips;
         [Min(0)] public float spawnCheckRadius;
     }
 
     public struct ShipSpawningSettingsData : IComponentData {
         public float3 position;
+        public float3 rotation; 
         public float3 spawnArea;
-        public int spawnAttempts;
+        public float shipCountMultiplier;
     }
 
-    public struct ShipSpawningPrefabElement : IBufferElementData {
+    public struct ShipSpawnElement : IBufferElementData {
         public Entity prefab;
-        public float2 numberOfShips;
-        public float spawnCheckRadius;
+        public int2 numberOfShips;
     }
 
 }

@@ -406,36 +406,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   position: {x: 0, y: 0, z: -50}
-  spawnArea: {x: 30, y: 30, z: 35}
-  spawnAttempts: 5
+  rotation: {x: 0, y: 0, z: 0}
+  spawnArea: {x: 10, y: 10, z: 15}
+  shipCountMultiplier: 2
   ships:
   - name: Crusier
     prefab: {fileID: 5380226125110603852, guid: 69182012566c48d4dbe07e72e55dbdb9, type: 3}
-    numberOfShips: {x: 1, y: 1}
+    numberOfShips:
+      x: 2
+      y: 6
     spawnCheckRadius: 4
   - name: Battleship
     prefab: {fileID: 1911068660837639625, guid: 20080353be1f4f64b89f49802a760ce2, type: 3}
-    numberOfShips: {x: 1, y: 3}
+    numberOfShips:
+      x: 4
+      y: 12
     spawnCheckRadius: 1
   - name: Bomber
     prefab: {fileID: 4785581037699545774, guid: b1fe60d5d97e90142b5f695cce4a5447, type: 3}
-    numberOfShips: {x: 3, y: 5}
+    numberOfShips:
+      x: 6
+      y: 16
     spawnCheckRadius: 0.75
-  - name: Bomber Squadron
-    prefab: {fileID: 3741406693916904696, guid: b6de3e47d05c22241a19d9e86fb6ce01, type: 3}
-    numberOfShips: {x: 2, y: 3}
-    spawnCheckRadius: 2
   - name: Fighter
     prefab: {fileID: 6653221153180116363, guid: e36a0175d4e75a549bfd3ce130d69b07, type: 3}
-    numberOfShips: {x: 4, y: 6}
+    numberOfShips:
+      x: 10
+      y: 20
     spawnCheckRadius: 0.3
-  - name: Fighter Squadron
-    prefab: {fileID: 8452089609780304529, guid: 21ea649407f0be54b9a030cf8375114c, type: 3}
-    numberOfShips: {x: 2, y: 3}
-    spawnCheckRadius: 1
   - name: Intercepter
     prefab: {fileID: 6877497232185417830, guid: 67cfe21129ec92647956a8f5e188fa48, type: 3}
-    numberOfShips: {x: 4, y: 6}
+    numberOfShips:
+      x: 10
+      y: 20
     spawnCheckRadius: 0.3
 --- !u!1 &861358297
 GameObject:
@@ -729,8 +732,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   position: {x: 0, y: 0, z: 0}
+  rotation: {x: 0, y: 0, z: 0}
   spawnArea: {x: 0, y: 0, z: 0}
-  spawnAttempts: 0
+  shipCountMultiplier: 1
   ships: []
 --- !u!1 &2102634283
 GameObject:
