@@ -4,11 +4,13 @@ using Unity.Mathematics;
 namespace Ie.TUDublin.GE2.Components.Steering {
 
     [GenerateAuthoringComponent]
-    public struct SpaceshipData : IComponentData {
+    public struct SpaceshipBoidData : IComponentData {
         public Entity Target;
-        public float3 TargetPosition;
-        
-        public float MaxSpeed; 
+
+        public float Speed;
+        public float MaxSpeed;
+
+        public float attackDistance;
     }
 
 }

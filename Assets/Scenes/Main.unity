@@ -374,7 +374,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 459600767}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.01}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -415,31 +415,26 @@ MonoBehaviour:
     numberOfShips:
       x: 2
       y: 6
-    spawnCheckRadius: 4
   - name: Battleship
     prefab: {fileID: 1911068660837639625, guid: 20080353be1f4f64b89f49802a760ce2, type: 3}
     numberOfShips:
       x: 4
       y: 12
-    spawnCheckRadius: 1
   - name: Bomber
     prefab: {fileID: 4785581037699545774, guid: b1fe60d5d97e90142b5f695cce4a5447, type: 3}
     numberOfShips:
       x: 6
       y: 16
-    spawnCheckRadius: 0.75
   - name: Fighter
     prefab: {fileID: 6653221153180116363, guid: e36a0175d4e75a549bfd3ce130d69b07, type: 3}
     numberOfShips:
       x: 10
       y: 20
-    spawnCheckRadius: 0.3
   - name: Intercepter
     prefab: {fileID: 6877497232185417830, guid: 67cfe21129ec92647956a8f5e188fa48, type: 3}
     numberOfShips:
       x: 10
       y: 20
-    spawnCheckRadius: 0.3
 --- !u!1 &861358297
 GameObject:
   m_ObjectHideFlags: 0
@@ -731,11 +726,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25a037cd4e6f4086968ac472bbb4de5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  position: {x: 0, y: 0, z: 0}
-  rotation: {x: 0, y: 0, z: 0}
-  spawnArea: {x: 0, y: 0, z: 0}
-  shipCountMultiplier: 1
-  ships: []
+  position: {x: 0, y: 0, z: 50}
+  rotation: {x: 0, y: 90, z: 0}
+  spawnArea: {x: 20, y: 10, z: 10}
+  shipCountMultiplier: 2
+  ships:
+  - name: Crusier
+    prefab: {fileID: 2819899104848150308, guid: 7f706e973315b2240bd787ef47658aca, type: 3}
+    numberOfShips:
+      x: 2
+      y: 6
+  - name: Battleship
+    prefab: {fileID: 3058385294203771266, guid: 192661ffc52661841bb33f48605bfc28, type: 3}
+    numberOfShips:
+      x: 4
+      y: 12
+  - name: Bomber
+    prefab: {fileID: 2773558594374658281, guid: 89aa379485603ef41a49f7bb31031e77, type: 3}
+    numberOfShips:
+      x: 6
+      y: 16
+  - name: Fighter
+    prefab: {fileID: 75522280200587639, guid: 477890b1c071a8f4bba8f1b1cf33c268, type: 3}
+    numberOfShips:
+      x: 10
+      y: 20
+  - name: Intercepter
+    prefab: {fileID: 2286354951625292640, guid: e147db9c3184ec34c9f4d04902ffc244, type: 3}
+    numberOfShips:
+      x: 10
+      y: 20
 --- !u!1 &2102634283
 GameObject:
   m_ObjectHideFlags: 0

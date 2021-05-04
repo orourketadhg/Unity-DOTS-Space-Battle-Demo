@@ -33,7 +33,7 @@ namespace Ie.TUDublin.GE2.Systems.Spawning {
 
                             var spawnArea = spawningSettings.spawnArea * spawningSettings.shipCountMultiplier;
                             var instancePosition = spawningSettings.position + random.NextFloat3(-spawnArea, spawnArea);
-                            var instanceRotation = quaternion.EulerXYZ(spawningSettings.rotation);
+                            var instanceRotation = quaternion.Euler(spawningSettings.rotation);
                             
                             var instance = ecb.Instantiate(shipElement.prefab);
                             ecb.SetComponent(instance, new Translation() {Value = instancePosition});

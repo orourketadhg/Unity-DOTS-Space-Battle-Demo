@@ -20,7 +20,6 @@ namespace Ie.TUDublin.GE2.Components.Spaceship {
             });
 
             dstManager.AddComponentData(entity, new LaserGunInternalSettingsData() {
-                IsFiringEnabled = 0,
                 TimeOfLastFire = 0
             });
         }
@@ -36,7 +35,6 @@ namespace Ie.TUDublin.GE2.Components.Spaceship {
     }
 
     public struct LaserGunInternalSettingsData : IComponentData {
-        public int IsFiringEnabled;
         public float TimeOfLastFire;
     }
 

@@ -1,4 +1,5 @@
 ﻿using Ie.TUDublin.GE2.Components.Spaceship;
+using Ie.TUDublin.GE2.Components.Statemachine;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Physics;
@@ -22,11 +23,8 @@ namespace Ie.TUDublin.GE2.Systems.Spaceship {
             Entities
                 .WithName("LaserBlastSpawning")
                 .WithBurst()
+                .WithAll<AttackingState>()
                 .ForEach((Entity entity, int entityInQueryIndex, ref LaserGunInternalSettingsData gunInternalSettingsData, in LaserGunSettingsData gunSettingsData, in LocalToWorld origin) => {
-
-                    if (gunInternalSettingsData.IsFiringEnabled == 0) {
-                        return;
-                    }
                     
                     if (time >= gunInternalSettingsData.TimeOfLastFire + gunSettingsData.FiringRate) {
                         gunInternalSettingsData.TimeOfLastFire = time;
