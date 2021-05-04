@@ -10,7 +10,7 @@ namespace Ie.TUDublin.GE2.Components.Steering {
         public float Speed;
         public float MaxSpeed;
 
-        public float attackDistance;
+        public float AttackDistance;
     }
 
 }

@@ -27,10 +27,10 @@ namespace Ie.TUDublin.GE2.Systems.Statemachine {
                     var targetPosition = GetComponent<Translation>(boidData.Target).Value;
                     float distanceToTarget = math.distance(position.Value, targetPosition);
 
-                    if (boidData.Target == Entity.Null || distanceToTarget > boidData.attackDistance) {
+                    if (boidData.Target == Entity.Null || distanceToTarget > boidData.AttackDistance) {
                         StatemachineUtil.TransitionFromAttacking(ecb, entityInQueryIndex, entity);
                     }
-                    if (distanceToTarget <= boidData.attackDistance && !HasComponent<AttackingState>(entity)) {
+                    if (distanceToTarget <= boidData.AttackDistance && !HasComponent<AttackingState>(entity)) {
                         StatemachineUtil.TransitionToAttacking(ecb, entityInQueryIndex, entity);
                     }
                     
