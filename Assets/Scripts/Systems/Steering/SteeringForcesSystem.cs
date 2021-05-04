@@ -7,7 +7,7 @@ using Unity.Transforms;
 
 namespace Ie.TUDublin.GE2.Systems.Steering {
 
-    public class SteeringBehaviourCalculationSystem : SystemBase {
+    public class SteeringForcesSystem : SystemBase {
 
         private EntityQuery _jitterWanderQuery;
         
@@ -34,7 +34,7 @@ namespace Ie.TUDublin.GE2.Systems.Steering {
 
             var translationHandle = GetComponentTypeHandle<Translation>();
             var rotationHandle = GetComponentTypeHandle<Rotation>();
-            var boidHandle = GetComponentTypeHandle<SpaceshipBoidData>();
+            var boidHandle = GetComponentTypeHandle<BoidData>();
             var jitterWanderHandle = GetComponentTypeHandle<JitterWanderData>();
 
             var jitterWanderJob = new WanderJob() {

@@ -22,7 +22,7 @@ namespace Ie.TUDublin.GE2.Systems.Statemachine {
             Entities
                 .WithName("AttackingState")
                 .WithBurst()
-                .ForEach((Entity entity, int entityInQueryIndex, int nativeThreadIndex, in Translation position, in SpaceshipBoidData boidData) => {
+                .ForEach((Entity entity, int entityInQueryIndex, int nativeThreadIndex, in Translation position, in BoidData boidData) => {
 
                     if (boidData.Target == Entity.Null) {
                         if (HasComponent<AttackingState>(entity)) {

@@ -21,7 +21,7 @@ namespace Ie.TUDublin.GE2.Systems.Spaceship {
             Entities
                 .WithName("SpaceshipCleanup")
                 .WithBurst()
-                .WithAll<SpaceshipBoidData>()
+                .WithAll<BoidData>()
                 .WithAny<AlliedTag, EnemyTag>()
                 .ForEach((Entity entity, int entityInQueryIndex, in HealthData healthData) => {
                     if (healthData.Value <= 0) {

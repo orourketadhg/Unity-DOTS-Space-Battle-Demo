@@ -12,7 +12,7 @@ namespace Ie.TUDublin.GE2.Components.Steering {
         public float Radius;
         public float Jitter;
 
-        public float3 target;
+        public float3 Target;
 
     }
 

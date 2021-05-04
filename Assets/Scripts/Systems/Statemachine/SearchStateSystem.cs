@@ -20,7 +20,7 @@ namespace Ie.TUDublin.GE2.Systems.Statemachine {
             Entities
                 .WithName("SearchingState")
                 .WithBurst()
-                .ForEach((Entity entity, int entityInQueryIndex, int nativeThreadIndex, in SpaceshipBoidData boidData) => {
+                .ForEach((Entity entity, int entityInQueryIndex, int nativeThreadIndex, in BoidData boidData) => {
 
                     if (boidData.Target == Entity.Null) {
                         StatemachineUtil.TransitionToSearching(ecb, entityInQueryIndex, entity);

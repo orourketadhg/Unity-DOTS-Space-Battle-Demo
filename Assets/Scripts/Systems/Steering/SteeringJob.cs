@@ -25,7 +25,7 @@ namespace Ie.TUDublin.GE2.Systems.Steering {
         public ComponentTypeHandle<LocalToWorld> LocalToWorldHandle;
         
         // Steering components
-        public ComponentTypeHandle<SpaceshipBoidData> SpaceshipHandle;
+        public ComponentTypeHandle<BoidData> SpaceshipHandle;
         // public ComponentTypeHandle<JitterWanderData> wanderHandle;
 
         public void Execute(ArchetypeChunk batchInChunk, int batchIndex) {
@@ -66,10 +66,10 @@ namespace Ie.TUDublin.GE2.Systems.Steering {
 
         }
         
-        private float3 CalculateSeekForce(in Translation position, in PhysicsVelocity velocity, in SpaceshipBoidData spaceshipBoid, float3 target) {
+        private float3 CalculateSeekForce(in Translation position, in PhysicsVelocity velocity, in BoidData boid, float3 target) {
             var desired = target - position.Value;
             desired = math.normalizesafe(desired);
-            desired *= spaceshipBoid.MaxSpeed;
+            desired *= boid.MaxForce;
             return desired - velocity.Linear;
         }
 
