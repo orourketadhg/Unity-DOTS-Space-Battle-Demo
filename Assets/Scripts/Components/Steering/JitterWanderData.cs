@@ -3,7 +3,8 @@ using Unity.Mathematics;
 
 namespace Ie.TUDublin.GE2.Components.Steering {
 
-    public struct JitterWander : IComponentData {
+    [GenerateAuthoringComponent]
+    public struct JitterWanderData : IComponentData {
         public float3 Force;
         public float Weight;
 

@@ -22,12 +22,19 @@ namespace Ie.TUDublin.GE2.Systems.Statemachine {
             Entities
                 .WithName("AttackingState")
                 .WithBurst()
-                .ForEach((Entity entity, int entityInQueryIndex, int nativeThreadIndex, in SpaceshipBoidData boidData, in Translation position) => {
+                .ForEach((Entity entity, int entityInQueryIndex, int nativeThreadIndex, in Translation position, in SpaceshipBoidData boidData) => {
 
+                    if (boidData.Target == Entity.Null) {
+                        if (HasComponent<AttackingState>(entity)) {
+                            StatemachineUtil.TransitionFromAttacking(ecb, entityInQueryIndex, entity);
+                        }
+                        return;
+                    }
+                    
                     var targetPosition = GetComponent<Translation>(boidData.Target).Value;
                     float distanceToTarget = math.distance(position.Value, targetPosition);
 
-                    if (boidData.Target == Entity.Null || distanceToTarget > boidData.AttackDistance) {
+                    if (distanceToTarget > boidData.AttackDistance) {
                         StatemachineUtil.TransitionFromAttacking(ecb, entityInQueryIndex, entity);
                     }
                     if (distanceToTarget <= boidData.AttackDistance && !HasComponent<AttackingState>(entity)) {

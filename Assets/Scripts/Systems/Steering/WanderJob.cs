@@ -16,7 +16,7 @@ namespace Ie.TUDublin.GE2.Systems.Steering {
         [NativeDisableParallelForRestriction] public NativeArray<Random> RandomArray;
         public float DeltaTime;
         
-        public ComponentTypeHandle<JitterWander> JitterWanderHandle;
+        public ComponentTypeHandle<JitterWanderData> JitterWanderHandle;
         [ReadOnly] public ComponentTypeHandle<Translation> TranslationHandle;
         [ReadOnly] public ComponentTypeHandle<Rotation> RotationHandle;
 

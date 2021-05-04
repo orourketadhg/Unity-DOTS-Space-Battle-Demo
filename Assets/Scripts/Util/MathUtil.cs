@@ -43,6 +43,19 @@ namespace Ie.TUDublin.GE2.Util {
             
             return math.abs(a);
         }
+
+        public static float3 ClampMagnitude(float3 vector, float maxLength) {
+            float sqrLength = math.lengthsq(vector);
+
+            if (sqrLength <= maxLength * maxLength) return vector;
+
+            float length = (float) math.sqrt((double) sqrLength);
+            float x = vector.x / length;
+            float y = vector.y / length;
+            float z = vector.z / length;
+
+            return new float3(x * maxLength, y * maxLength, z * maxLength);
+        }
         
     }
 

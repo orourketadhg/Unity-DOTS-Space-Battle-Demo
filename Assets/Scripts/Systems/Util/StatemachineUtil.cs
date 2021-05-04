@@ -1,9 +1,10 @@
 ﻿using Ie.TUDublin.GE2.Components.Statemachine;
+using Unity.Burst;
 using Unity.Entities;
 
 namespace Ie.TUDublin.GE2.Systems.Util {
 
-    
+    [BurstCompile]
     public static class StatemachineUtil {
 
         public static void TransitionToAttacking(EntityCommandBuffer.ParallelWriter ecb, int index, Entity entity) {
