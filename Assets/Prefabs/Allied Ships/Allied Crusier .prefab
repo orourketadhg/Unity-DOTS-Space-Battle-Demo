@@ -29948,6 +29948,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 0}
+  Mass: 1
+  Banking: 0
+  Damping: 0
+  Force:
+    x: 0
+    y: 0
+    z: 0
+  MaxForce: 400
+  Velocity:
+    x: 0
+    y: 0
+    z: 0
+  Acceleration:
+    x: 0
+    y: 0
+    z: 0
+  Up:
+    x: 0
+    y: 0
+    z: 0
   Speed: 0
   MaxSpeed: 100
   AttackDistance: 25
@@ -29971,7 +29991,7 @@ MonoBehaviour:
   Distance: 20
   Radius: 10
   Jitter: 100
-  target:
+  Target:
     x: 0
     y: 0
     z: 0

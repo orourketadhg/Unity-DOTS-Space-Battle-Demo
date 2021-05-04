@@ -3,6 +3,7 @@ using Ie.TUDublin.GE2.Util;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
+using UnityEngine;
 
 namespace Ie.TUDublin.GE2.Systems.Steering {
 
@@ -40,7 +41,7 @@ namespace Ie.TUDublin.GE2.Systems.Steering {
                         
                         // look rotation and banking
                         var tempUp = math.lerp(boidData.Up, math.up() + (boidData.Acceleration * boidData.Banking), dt * 3.0f);
-                        rotation.Value = quaternion.LookRotationSafe(boidData.Velocity, tempUp);
+                        rotation.Value = quaternion.LookRotation(boidData.Velocity, tempUp);
                         boidData.Up = tempUp * math.up();
 
                         translation.Value += boidData.Velocity * dt;

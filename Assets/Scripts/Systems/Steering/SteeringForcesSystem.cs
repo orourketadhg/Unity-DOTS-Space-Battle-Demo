@@ -37,7 +37,7 @@ namespace Ie.TUDublin.GE2.Systems.Steering {
             var boidHandle = GetComponentTypeHandle<BoidData>();
             var jitterWanderHandle = GetComponentTypeHandle<JitterWanderData>();
 
-            var jitterWanderJob = new WanderJob() {
+            var wanderJob = new WanderJob() {
                 RandomArray = randomArray,
                 DeltaTime = dt,
 
@@ -46,7 +46,7 @@ namespace Ie.TUDublin.GE2.Systems.Steering {
                 RotationHandle = rotationHandle
             };
             
-            var jitterWanderJobHandle = jitterWanderJob.ScheduleParallel(_jitterWanderQuery, 1, Dependency);
+            var jitterWanderJobHandle = wanderJob.ScheduleParallel(_jitterWanderQuery, 1, Dependency);
             
             Dependency = JobHandle.CombineDependencies(Dependency, jitterWanderJobHandle);
         }

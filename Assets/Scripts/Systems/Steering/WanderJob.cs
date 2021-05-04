@@ -34,7 +34,7 @@ namespace Ie.TUDublin.GE2.Systems.Steering {
 
                 var displacement = wander.Jitter * random.NextFloat3Direction() * DeltaTime;
                 wander.Target += displacement;
-                wander.Target = math.normalizesafe(wander.Target);
+                wander.Target = math.normalize(wander.Target);
                 wander.Target *= wander.Radius;
 
                 var localTarget = ( math.forward() * wander.Distance ) + wander.Distance;
