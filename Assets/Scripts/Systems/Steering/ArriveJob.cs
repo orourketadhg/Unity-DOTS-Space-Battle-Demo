@@ -9,37 +9,43 @@ using Unity.Transforms;
 namespace Ie.TUDublin.GE2.Systems.Steering {
 
     [BurstCompile]
-    public struct SeekJob : IJobEntityBatch {
+    public struct ArriveJob : IJobEntityBatch {
         
         [ReadOnly] public ComponentTypeHandle<Translation> TranslationHandle;
         [ReadOnly] public ComponentTypeHandle<TargetingData> TargetHandle;
         [ReadOnly] public ComponentTypeHandle<BoidData> BoidHandle;
 
-        public ComponentTypeHandle<SeekData> SeekHandle;
+        public ComponentTypeHandle<ArriveData> ArriveHandle;
 
         public void Execute(ArchetypeChunk batchInChunk, int batchIndex) {
-            var seekData = batchInChunk.GetNativeArray(SeekHandle);
+            var arriveData = batchInChunk.GetNativeArray(ArriveHandle);
             var targetData = batchInChunk.GetNativeArray(TargetHandle);
             var boidData = batchInChunk.GetNativeArray(BoidHandle);
             var translationData = batchInChunk.GetNativeArray(TranslationHandle);
 
             for (int i = 0; i < batchInChunk.Count; i++) {
-                var seek = seekData[i];
+                var arrive = arriveData[i];
                 var target = targetData[i];
                 var boid = boidData[i];
                 var position = translationData[i].Value;
 
-                if (target.Target == Entity.Null) {
-                    continue;
+                var toTarget = target.TargetPosition - position;
+                float distanceToTarget = math.length(toTarget);
+
+                if (distanceToTarget > 0) {
+
+                    float ramped = boid.MaxSpeed * ( distanceToTarget / arrive.SlowingDistance );
+                    float clamped = math.min(ramped, boid.MaxSpeed);
+                    var desired = clamped * ( toTarget / distanceToTarget );
+
+                    arrive.Force = desired - boid.Velocity;
+
                 }
-
-                var desired = target.TargetPosition - position;
-                desired = math.normalize(desired);
-                desired *= boid.MaxSpeed;
-
-                seek.Force = desired - boid.Velocity;
+                else {
+                    arrive.Force = float3.zero;
+                }
                 
-                seekData[i] = seek;
+                arriveData[i] = arrive;
             }
             
         }

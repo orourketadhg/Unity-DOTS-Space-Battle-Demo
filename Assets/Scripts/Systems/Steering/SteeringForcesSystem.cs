@@ -1,5 +1,4 @@
 ﻿using Ie.TUDublin.GE2.Components.Spaceship;
-using Ie.TUDublin.GE2.Components.Statemachine;
 using Ie.TUDublin.GE2.Components.Steering;
 using Ie.TUDublin.GE2.Systems.Util;
 using Unity.Entities;
@@ -11,15 +10,28 @@ namespace Ie.TUDublin.GE2.Systems.Steering {
     public class SteeringForcesSystem : SystemBase {
 
         private EntityQuery _seekQuery;
+        private EntityQuery _arriveQuery;
         private EntityQuery _wanderQuery;
+        private EntityQuery _constrainQuery;
 
         protected override void OnCreate() {
             
+            // query descriptions
             var seekQueryDesc = new EntityQueryDesc() {
                 All = new [] {
-                    typeof(wanderData),
+                    typeof(SeekData),
+                    ComponentType.ReadOnly<BoidData>(), 
+                    ComponentType.ReadOnly<TargetingData>(), 
                     ComponentType.ReadOnly<Translation>(),
-                    ComponentType.ReadOnly<Rotation>(),
+                }
+            };
+            
+            var arriveQueryDesc = new EntityQueryDesc() {
+                All = new [] {
+                    typeof(ArriveData),
+                    ComponentType.ReadOnly<BoidData>(), 
+                    ComponentType.ReadOnly<TargetingData>(), 
+                    ComponentType.ReadOnly<Translation>(),
                 }
             };
 
@@ -31,12 +43,25 @@ namespace Ie.TUDublin.GE2.Systems.Steering {
                 }
             };
             
+            var constrainQueryDesc = new EntityQueryDesc() {
+                All = new [] {
+                    typeof(ConstrainData),
+                    ComponentType.ReadOnly<Translation>(),
+                }
+            };
+            
+            // queries
             _seekQuery = GetEntityQuery(seekQueryDesc);
+            _arriveQuery = GetEntityQuery(arriveQueryDesc);
             _wanderQuery = GetEntityQuery(wanderQueryDesc);
+            _constrainQuery = GetEntityQuery(constrainQueryDesc);
+            
         }
 
         protected override void OnUpdate() {
 
+            // handlers and parameters
+            
             var randomArray = World.GetExistingSystem<RandomSystem>().RandomArray;
             float dt = Time.DeltaTime;
 
@@ -46,13 +71,23 @@ namespace Ie.TUDublin.GE2.Systems.Steering {
             var targetingHandle = GetComponentTypeHandle<TargetingData>();
 
             var seekHandle = GetComponentTypeHandle<SeekData>(); 
+            var arriveHandle = GetComponentTypeHandle<ArriveData>(); 
             var wanderHandle = GetComponentTypeHandle<wanderData>();
+            var constrainHandle = GetComponentTypeHandle<ConstrainData>();
 
+            // job declarations
             var seekJob = new SeekJob() {
                 TranslationHandle = translationHandle,
                 BoidHandle = boidHandle,
                 TargetHandle = targetingHandle,
                 SeekHandle = seekHandle
+            };
+            
+            var arriveJob = new ArriveJob() {
+                TranslationHandle = translationHandle,
+                BoidHandle = boidHandle,
+                TargetHandle = targetingHandle,
+                ArriveHandle = arriveHandle
             };
 
             var wanderJob = new WanderJob() {
@@ -63,12 +98,23 @@ namespace Ie.TUDublin.GE2.Systems.Steering {
                 RotationHandle = rotationHandle,
                 JitterWanderHandle = wanderHandle
             };
+
+            var constrainJob = new ConstrainJob() {
+                TranslationHandle = translationHandle,
+                ConstrainHandle = constrainHandle
+            };
             
-            var seekJobHandle = wanderJob.ScheduleParallel(_seekQuery, 1, Dependency);
+            // scheduling
+            var seekJobHandle = seekJob.ScheduleParallel(_seekQuery, 1, Dependency);
+            var arriveJobHandle = arriveJob.ScheduleParallel(_arriveQuery, 1, Dependency);
             var wanderJobHandle = wanderJob.ScheduleParallel(_wanderQuery, 1, Dependency);
+            var constrainJobHandle = constrainJob.ScheduleParallel(_constrainQuery, 1, Dependency);
             
+            // dependencies
             Dependency = JobHandle.CombineDependencies(Dependency, seekJobHandle);
+            Dependency = JobHandle.CombineDependencies(Dependency, arriveJobHandle);
             Dependency = JobHandle.CombineDependencies(Dependency, wanderJobHandle);
+            Dependency = JobHandle.CombineDependencies(Dependency, constrainJobHandle);
         }
         
     }

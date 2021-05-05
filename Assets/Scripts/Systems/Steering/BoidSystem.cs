@@ -21,9 +21,27 @@ namespace Ie.TUDublin.GE2.Systems.Steering {
                     var boidData = spaceshipBoidData;
                     
                     var force = float3.zero;
+                    
+                    if (HasComponent<SeekData>(entity)) {
+                        var wanderData = GetComponent<SeekData>(entity);
+                        force += wanderData.Force * wanderData.Weight;
+                        force = MathUtil.ClampMagnitude(force, boidData.MaxForce);
+                    }
+                    
+                    if (HasComponent<ArriveData>(entity)) {
+                        var wanderData = GetComponent<ArriveData>(entity);
+                        force += wanderData.Force * wanderData.Weight;
+                        force = MathUtil.ClampMagnitude(force, boidData.MaxForce);
+                    }
 
                     if (HasComponent<wanderData>(entity)) {
                         var wanderData = GetComponent<wanderData>(entity);
+                        force += wanderData.Force * wanderData.Weight;
+                        force = MathUtil.ClampMagnitude(force, boidData.MaxForce);
+                    }
+                    
+                    if (HasComponent<ConstrainData>(entity)) {
+                        var wanderData = GetComponent<ConstrainData>(entity);
                         force += wanderData.Force * wanderData.Weight;
                         force = MathUtil.ClampMagnitude(force, boidData.MaxForce);
                     }
