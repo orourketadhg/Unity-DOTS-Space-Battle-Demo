@@ -11,6 +11,7 @@ namespace Ie.TUDublin.GE2.Systems.Steering {
 
         private EntityQuery _seekQuery;
         private EntityQuery _arriveQuery;
+        private EntityQuery _pursueQuery;
         private EntityQuery _wanderQuery;
         private EntityQuery _constrainQuery;
 
@@ -29,6 +30,15 @@ namespace Ie.TUDublin.GE2.Systems.Steering {
             var arriveQueryDesc = new EntityQueryDesc() {
                 All = new [] {
                     typeof(ArriveData),
+                    ComponentType.ReadOnly<BoidData>(), 
+                    ComponentType.ReadOnly<TargetingData>(), 
+                    ComponentType.ReadOnly<Translation>(),
+                }
+            };
+            
+            var pursueQueryDesc = new EntityQueryDesc() {
+                All = new [] {
+                    typeof(PursueData),
                     ComponentType.ReadOnly<BoidData>(), 
                     ComponentType.ReadOnly<TargetingData>(), 
                     ComponentType.ReadOnly<Translation>(),
@@ -53,6 +63,7 @@ namespace Ie.TUDublin.GE2.Systems.Steering {
             // queries
             _seekQuery = GetEntityQuery(seekQueryDesc);
             _arriveQuery = GetEntityQuery(arriveQueryDesc);
+            _pursueQuery = GetEntityQuery(pursueQueryDesc);
             _wanderQuery = GetEntityQuery(wanderQueryDesc);
             _constrainQuery = GetEntityQuery(constrainQueryDesc);
             
@@ -71,7 +82,8 @@ namespace Ie.TUDublin.GE2.Systems.Steering {
             var targetingHandle = GetComponentTypeHandle<TargetingData>();
 
             var seekHandle = GetComponentTypeHandle<SeekData>(); 
-            var arriveHandle = GetComponentTypeHandle<ArriveData>(); 
+            var arriveHandle = GetComponentTypeHandle<ArriveData>();
+            var pursueHandle = GetComponentTypeHandle<PursueData>();
             var wanderHandle = GetComponentTypeHandle<wanderData>();
             var constrainHandle = GetComponentTypeHandle<ConstrainData>();
 
@@ -88,6 +100,13 @@ namespace Ie.TUDublin.GE2.Systems.Steering {
                 BoidHandle = boidHandle,
                 TargetHandle = targetingHandle,
                 ArriveHandle = arriveHandle
+            };
+            
+            var pursueJob = new PursueJob() {
+                TranslationHandle = translationHandle,
+                BoidHandle = boidHandle,
+                TargetHandle = targetingHandle,
+                PursueHandle = pursueHandle
             };
 
             var wanderJob = new WanderJob() {
@@ -107,12 +126,14 @@ namespace Ie.TUDublin.GE2.Systems.Steering {
             // scheduling
             var seekJobHandle = seekJob.ScheduleParallel(_seekQuery, 1, Dependency);
             var arriveJobHandle = arriveJob.ScheduleParallel(_arriveQuery, 1, Dependency);
+            var pursueJobHandle = pursueJob.ScheduleParallel(_pursueQuery, 1, Dependency);
             var wanderJobHandle = wanderJob.ScheduleParallel(_wanderQuery, 1, Dependency);
             var constrainJobHandle = constrainJob.ScheduleParallel(_constrainQuery, 1, Dependency);
             
             // dependencies
             Dependency = JobHandle.CombineDependencies(Dependency, seekJobHandle);
             Dependency = JobHandle.CombineDependencies(Dependency, arriveJobHandle);
+            Dependency = JobHandle.CombineDependencies(Dependency, pursueJobHandle);
             Dependency = JobHandle.CombineDependencies(Dependency, wanderJobHandle);
             Dependency = JobHandle.CombineDependencies(Dependency, constrainJobHandle);
         }
