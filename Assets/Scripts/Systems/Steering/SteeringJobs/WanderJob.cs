@@ -19,10 +19,10 @@ namespace Ie.TUDublin.GE2.Systems.Steering.SteeringJobs {
         [ReadOnly] public ComponentTypeHandle<Translation> TranslationHandle;
         [ReadOnly] public ComponentTypeHandle<Rotation> RotationHandle;
         
-        public ComponentTypeHandle<WanderData> JitterWanderHandle;
+        public ComponentTypeHandle<WanderData> WanderHandle;
 
         public void Execute(ArchetypeChunk batchInChunk, int batchIndex) {
-            var wanderData = batchInChunk.GetNativeArray(JitterWanderHandle);
+            var wanderData = batchInChunk.GetNativeArray(WanderHandle);
             var translationData = batchInChunk.GetNativeArray(TranslationHandle);
             var rotationData = batchInChunk.GetNativeArray(RotationHandle);
             

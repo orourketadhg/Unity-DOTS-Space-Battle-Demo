@@ -57758,6 +57758,13 @@ GameObject:
   - component: {fileID: 1567669785546935226}
   - component: {fileID: 8939701509136785278}
   - component: {fileID: -864043887959282219}
+  - component: {fileID: 5897714267413578218}
+  - component: {fileID: -4840702574132719738}
+  - component: {fileID: -4185484088129508085}
+  - component: {fileID: -4638069905728323692}
+  - component: {fileID: 6823584252403390654}
+  - component: {fileID: 1533328916663657646}
+  - component: {fileID: 3033659619437797500}
   m_Layer: 0
   m_Name: Enemy Crusier
   m_TagString: Untagged
@@ -58069,6 +58076,151 @@ MonoBehaviour:
   Mass: 0
   Banking: 0
   Damping: 0
+--- !u!114 &5897714267413578218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2819899104848150308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05952e0458974f3789a4830773331576, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Seek: 0
+  Arrive: 0
+  Pursue: 0
+  Flee: 0
+  Wander: 0
+  Constrain: 0
+--- !u!114 &-4840702574132719738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2819899104848150308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96ced9f94c774696ab07e0793be27a55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Force:
+    x: 0
+    y: 0
+    z: 0
+  Weight: 0
+--- !u!114 &-4185484088129508085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2819899104848150308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdd8a8dc8a6448bebe5ed47ead62c09c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Force:
+    x: 0
+    y: 0
+    z: 0
+  Weight: 0
+  SlowingDistance: 0
+--- !u!114 &-4638069905728323692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2819899104848150308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5b2b2c4ffed459cb14d167a30ca1bad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Force:
+    x: 0
+    y: 0
+    z: 0
+  Weight: 0
+  TargetVelocity:
+    x: 0
+    y: 0
+    z: 0
+--- !u!114 &6823584252403390654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2819899104848150308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90de6321d91446f099a7e03b9ab95d24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Force:
+    x: 0
+    y: 0
+    z: 0
+  Weight: 0
+--- !u!114 &1533328916663657646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2819899104848150308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f182044c3ad841f48433c7fc8c60335b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Force:
+    x: 0
+    y: 0
+    z: 0
+  Weight: 0.05
+  Radius: 10
+  Origin:
+    x: 0
+    y: 0
+    z: 0
+--- !u!114 &3033659619437797500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2819899104848150308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b847b9dc4ae4d5f95e4ef693a30b23f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Force:
+    x: 0
+    y: 0
+    z: 0
+  Weight: 2
+  Distance: 2
+  Radius: 1.2
+  Jitter: 80
+  Target:
+    x: 0
+    y: 0
+    z: 0
+  LocalTarget:
+    x: 0
+    y: 0
+    z: 0
+  WorldTarget:
+    x: 0
+    y: 0
+    z: 0
 --- !u!1 &3508670039093710654
 GameObject:
   m_ObjectHideFlags: 0

@@ -29593,7 +29593,13 @@ GameObject:
   - component: {fileID: 7403839666779707163}
   - component: {fileID: 7154183793882578033}
   - component: {fileID: -946486719443226900}
-  - component: {fileID: 7244656185627324135}
+  - component: {fileID: 2157240307280316035}
+  - component: {fileID: 6708891950052575037}
+  - component: {fileID: 3060515605903903418}
+  - component: {fileID: 1157126619334015188}
+  - component: {fileID: -3923263369087652216}
+  - component: {fileID: 5705043205352580563}
+  - component: {fileID: -8923766577752693656}
   m_Layer: 0
   m_Name: 'Allied Crusier '
   m_TagString: Untagged
@@ -29957,7 +29963,98 @@ MonoBehaviour:
   Mass: 1
   Banking: 0.5
   Damping: 0.01
---- !u!114 &7244656185627324135
+--- !u!114 &2157240307280316035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5380226125110603852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05952e0458974f3789a4830773331576, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Seek: 0
+  Arrive: 0
+  Pursue: 0
+  Flee: 0
+  Wander: 1
+  Constrain: 1
+--- !u!114 &6708891950052575037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5380226125110603852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96ced9f94c774696ab07e0793be27a55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Force:
+    x: 0
+    y: 0
+    z: 0
+  Weight: 0
+--- !u!114 &3060515605903903418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5380226125110603852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdd8a8dc8a6448bebe5ed47ead62c09c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Force:
+    x: 0
+    y: 0
+    z: 0
+  Weight: 0
+  SlowingDistance: 0
+--- !u!114 &1157126619334015188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5380226125110603852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5b2b2c4ffed459cb14d167a30ca1bad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Force:
+    x: 0
+    y: 0
+    z: 0
+  Weight: 0
+  TargetVelocity:
+    x: 0
+    y: 0
+    z: 0
+--- !u!114 &-3923263369087652216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5380226125110603852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90de6321d91446f099a7e03b9ab95d24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Force:
+    x: 0
+    y: 0
+    z: 0
+  Weight: 0
+--- !u!114 &5705043205352580563
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -29973,9 +30070,41 @@ MonoBehaviour:
     x: 0
     y: 0
     z: 0
-  Weight: 1
-  Radius: 5
+  Weight: 0.05
+  Radius: 10
   Origin:
+    x: 0
+    y: 0
+    z: 0
+--- !u!114 &-8923766577752693656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5380226125110603852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b847b9dc4ae4d5f95e4ef693a30b23f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Force:
+    x: 0
+    y: 0
+    z: 0
+  Weight: 2
+  Distance: 2
+  Radius: 1.2
+  Jitter: 80
+  Target:
+    x: 0
+    y: 0
+    z: 0
+  LocalTarget:
+    x: 0
+    y: 0
+    z: 0
+  WorldTarget:
     x: 0
     y: 0
     z: 0

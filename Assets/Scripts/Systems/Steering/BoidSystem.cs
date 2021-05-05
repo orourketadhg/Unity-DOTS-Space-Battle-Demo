@@ -1,84 +1,71 @@
 ﻿using Ie.TUDublin.GE2.Components.Steering;
-using Ie.TUDublin.GE2.Systems.Util;
 using Unity.Entities;
-using Unity.Mathematics;
+using Unity.Jobs;
 using Unity.Transforms;
 
 namespace Ie.TUDublin.GE2.Systems.Steering {
 
     [UpdateAfter(typeof(SteeringForcesSystem))]
     public class BoidSystem : SystemBase {
-        
+
+        private EntityQuery _boidQuery;
+
+        protected override void OnCreate() {
+
+            var boidQueryDesc = new EntityQueryDesc() {
+                Any = new[] {
+                    typeof(Translation),
+                    typeof(Rotation),
+                    typeof(BoidData),
+                    ComponentType.ReadOnly<ActiveSteeringData>(),
+                    ComponentType.ReadOnly<SeekData>(),
+                    ComponentType.ReadOnly<ArriveData>(),
+                    ComponentType.ReadOnly<PursueData>(),
+                    ComponentType.ReadOnly<FleeData>(),
+                    ComponentType.ReadOnly<WanderData>(),
+                    ComponentType.ReadOnly<ConstrainData>(),
+
+                }
+            };
+
+            _boidQuery = GetEntityQuery(boidQueryDesc);
+
+        }
+
         protected override void OnUpdate() {
 
             float dt = Time.DeltaTime;
+            
+            var seekHandle = GetComponentTypeHandle<SeekData>(); 
+            var arriveHandle = GetComponentTypeHandle<ArriveData>();
+            var pursueHandle = GetComponentTypeHandle<PursueData>();
+            var fleeHandle = GetComponentTypeHandle<FleeData>();
+            var wanderHandle = GetComponentTypeHandle<WanderData>();
+            var constrainHandle = GetComponentTypeHandle<ConstrainData>();
 
-            Entities
-                .WithName("SteeringBehaviourForceAccumulationJob")
-                .WithBurst()
-                .ForEach((Entity entity, int entityInQueryIndex, int nativeThreadIndex, ref BoidData spaceshipBoidData, ref Translation translation, ref Rotation rotation) => {
-                    
-                    var boidData = spaceshipBoidData;
-                    
-                    var force = float3.zero;
-                    
-                    if (HasComponent<SeekData>(entity)) {
-                        var wanderData = GetComponent<SeekData>(entity);
-                        force += wanderData.Force * wanderData.Weight;
-                        force = MathUtil.ClampMagnitude(force, boidData.MaxForce);
-                    }
-                    
-                    if (HasComponent<ArriveData>(entity)) {
-                        var wanderData = GetComponent<ArriveData>(entity);
-                        force += wanderData.Force * wanderData.Weight;
-                        force = MathUtil.ClampMagnitude(force, boidData.MaxForce);
-                    }
-                    
-                    if (HasComponent<PursueData>(entity)) {
-                        var wanderData = GetComponent<PursueData>(entity);
-                        force += wanderData.Force * wanderData.Weight;
-                        force = MathUtil.ClampMagnitude(force, boidData.MaxForce);
-                    }
-                    
-                    if (HasComponent<FleeData>(entity)) {
-                        var wanderData = GetComponent<FleeData>(entity);
-                        force += wanderData.Force * wanderData.Weight;
-                        force = MathUtil.ClampMagnitude(force, boidData.MaxForce);
-                    }
+            var translationHandle = GetComponentTypeHandle<Translation>();
+            var rotationHandle = GetComponentTypeHandle<Rotation>();
+            var boidHandle = GetComponentTypeHandle<BoidData>();
+            var steeringHandle = GetComponentTypeHandle<ActiveSteeringData>();
 
-                    if (HasComponent<WanderData>(entity)) {
-                        var wanderData = GetComponent<WanderData>(entity);
-                        force += wanderData.Force * wanderData.Weight;
-                        force = MathUtil.ClampMagnitude(force, boidData.MaxForce);
-                    }
-                    
-                    if (HasComponent<ConstrainData>(entity)) {
-                        var wanderData = GetComponent<ConstrainData>(entity);
-                        force += wanderData.Force * wanderData.Weight;
-                        force = MathUtil.ClampMagnitude(force, boidData.MaxForce);
-                    }
+            var boidJob = new BoidJob() {
+                DeltaTime = dt,
 
-                    boidData.Force = MathUtil.ClampMagnitude(force, boidData.MaxForce);
-                    boidData.Acceleration = boidData.Force / boidData.Mass;
-                    boidData.Velocity += boidData.Acceleration * dt;
+                SeekHandle = seekHandle,
+                ArriveHandle = arriveHandle,
+                PursueHandle = pursueHandle,
+                FleeHandle = fleeHandle,
+                WanderHandle = wanderHandle,
+                ConstrainHandle = constrainHandle,
+                SteeringHandle = steeringHandle,
+                TranslationHandle = translationHandle,
+                RotationHandle = rotationHandle,
+                BoidData = boidHandle
+            };
 
-                    boidData.Velocity = MathUtil.ClampMagnitude(boidData.Velocity, boidData.MaxSpeed);
+            var boidJobHandle = boidJob.ScheduleParallel(_boidQuery, 1, Dependency);
+            Dependency = JobHandle.CombineDependencies(Dependency, boidJobHandle);
 
-                    boidData.Speed = math.length(boidData.Velocity);
-                    if (boidData.Speed > 0) {
-                        
-                        var tempUp = math.lerp(boidData.Up, math.up() + (boidData.Acceleration * boidData.Banking), dt * 3.0f);
-                        rotation.Value = quaternion.LookRotation(boidData.Velocity, tempUp);
-                        boidData.Up = tempUp * math.up();
-
-                        translation.Value += boidData.Velocity * dt;
-                        boidData.Velocity *= ( 1.0f - ( boidData.Damping * dt ) );
-
-                    }
-                    
-                    spaceshipBoidData = boidData;
-
-                }).ScheduleParallel();
 
         }
 

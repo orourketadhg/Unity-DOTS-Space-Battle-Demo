@@ -1,6 +1,5 @@
 ﻿using Ie.TUDublin.GE2.Components.Spaceship;
 using Ie.TUDublin.GE2.Components.Statemachine;
-using Ie.TUDublin.GE2.Systems.Spaceship;
 using Ie.TUDublin.GE2.Systems.Util;
 using Unity.Entities;
 

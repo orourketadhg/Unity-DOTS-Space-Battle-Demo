@@ -135,7 +135,7 @@ namespace Ie.TUDublin.GE2.Systems.Steering {
 
                 TranslationHandle = translationHandle,
                 RotationHandle = rotationHandle,
-                JitterWanderHandle = wanderHandle
+                WanderHandle = wanderHandle
             };
 
             var constrainJob = new ConstrainJob() {

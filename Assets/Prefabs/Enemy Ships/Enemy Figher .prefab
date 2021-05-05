@@ -19232,6 +19232,13 @@ GameObject:
   - component: {fileID: -1284123098495736500}
   - component: {fileID: -5209066252966689786}
   - component: {fileID: -1905038966706810297}
+  - component: {fileID: 2229368356331231647}
+  - component: {fileID: -6821512872569898094}
+  - component: {fileID: 8647605284234836167}
+  - component: {fileID: -2780846657805402183}
+  - component: {fileID: 3490255103526413865}
+  - component: {fileID: -3888664282229914782}
+  - component: {fileID: -5703502747600667750}
   m_Layer: 0
   m_Name: 'Enemy Figher '
   m_TagString: Untagged
@@ -19525,6 +19532,151 @@ MonoBehaviour:
   Mass: 0
   Banking: 0
   Damping: 0
+--- !u!114 &2229368356331231647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 75522280200587639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05952e0458974f3789a4830773331576, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Seek: 0
+  Arrive: 0
+  Pursue: 0
+  Flee: 0
+  Wander: 0
+  Constrain: 0
+--- !u!114 &-6821512872569898094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 75522280200587639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96ced9f94c774696ab07e0793be27a55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Force:
+    x: 0
+    y: 0
+    z: 0
+  Weight: 0
+--- !u!114 &8647605284234836167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 75522280200587639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdd8a8dc8a6448bebe5ed47ead62c09c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Force:
+    x: 0
+    y: 0
+    z: 0
+  Weight: 0
+  SlowingDistance: 0
+--- !u!114 &-2780846657805402183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 75522280200587639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5b2b2c4ffed459cb14d167a30ca1bad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Force:
+    x: 0
+    y: 0
+    z: 0
+  Weight: 0
+  TargetVelocity:
+    x: 0
+    y: 0
+    z: 0
+--- !u!114 &3490255103526413865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 75522280200587639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90de6321d91446f099a7e03b9ab95d24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Force:
+    x: 0
+    y: 0
+    z: 0
+  Weight: 0
+--- !u!114 &-3888664282229914782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 75522280200587639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f182044c3ad841f48433c7fc8c60335b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Force:
+    x: 0
+    y: 0
+    z: 0
+  Weight: 0.05
+  Radius: 10
+  Origin:
+    x: 0
+    y: 0
+    z: 0
+--- !u!114 &-5703502747600667750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 75522280200587639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b847b9dc4ae4d5f95e4ef693a30b23f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Force:
+    x: 0
+    y: 0
+    z: 0
+  Weight: 2
+  Distance: 2
+  Radius: 1.2
+  Jitter: 80
+  Target:
+    x: 0
+    y: 0
+    z: 0
+  LocalTarget:
+    x: 0
+    y: 0
+    z: 0
+  WorldTarget:
+    x: 0
+    y: 0
+    z: 0
 --- !u!1 &3202744363865599607
 GameObject:
   m_ObjectHideFlags: 0
