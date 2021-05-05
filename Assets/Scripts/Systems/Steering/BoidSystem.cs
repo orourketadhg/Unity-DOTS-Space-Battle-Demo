@@ -1,5 +1,5 @@
 ﻿using Ie.TUDublin.GE2.Components.Steering;
-using Ie.TUDublin.GE2.Util;
+using Ie.TUDublin.GE2.Systems.Util;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
