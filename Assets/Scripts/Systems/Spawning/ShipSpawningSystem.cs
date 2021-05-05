@@ -1,6 +1,7 @@
 ﻿using ie.TUDublin.GE2.Components.Spawning;
 using ie.TUDublin.GE2.Systems.Util;
 using Unity.Entities;
+using Unity.Jobs;
 using Unity.Mathematics;
 using Unity.Transforms;
 
@@ -9,6 +10,8 @@ namespace ie.TUDublin.GE2.Systems.Spawning {
     public class ShipSpawningSystem : SystemBase {
         
         private BeginSimulationEntityCommandBufferSystem _entityCommandBuffer;
+
+        public JobHandle OutDependency => Dependency;
         
         protected override void OnCreate() {
             _entityCommandBuffer = World.GetExistingSystem<BeginSimulationEntityCommandBufferSystem>();

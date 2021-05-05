@@ -1,5 +1,6 @@
 ﻿using ie.TUDublin.GE2.Components.Spaceship;
 using ie.TUDublin.GE2.Components.Steering;
+using ie.TUDublin.GE2.Systems.Spawning;
 using ie.TUDublin.GE2.Systems.Steering.SteeringJobs;
 using ie.TUDublin.GE2.Systems.Util;
 using Unity.Entities;
@@ -82,16 +83,19 @@ namespace ie.TUDublin.GE2.Systems.Steering {
         }
 
         protected override void OnUpdate() {
+            
+            var shipSpawningDependency = World.GetExistingSystem<ShipSpawningSystem>().OutDependency;
+            Dependency = JobHandle.CombineDependencies(Dependency, shipSpawningDependency);
 
             // handlers and parameters
             
             var randomArray = World.GetExistingSystem<RandomSystem>().RandomArray;
             float dt = Time.DeltaTime;
 
-            var translationHandle = GetComponentTypeHandle<Translation>();
-            var rotationHandle = GetComponentTypeHandle<Rotation>();
-            var boidHandle = GetComponentTypeHandle<BoidData>();
-            var targetingHandle = GetComponentTypeHandle<TargetingData>();
+            var translationHandle = GetComponentTypeHandle<Translation>(true);
+            var rotationHandle = GetComponentTypeHandle<Rotation>(true);
+            var boidHandle = GetComponentTypeHandle<BoidData>(true);
+            var targetingHandle = GetComponentTypeHandle<TargetingData>(true);
 
             var seekHandle = GetComponentTypeHandle<SeekData>(); 
             var arriveHandle = GetComponentTypeHandle<ArriveData>();

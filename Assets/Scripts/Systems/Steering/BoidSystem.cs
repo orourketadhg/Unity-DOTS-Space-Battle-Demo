@@ -1,6 +1,5 @@
 ﻿using ie.TUDublin.GE2.Components.Steering;
 using Unity.Entities;
-using Unity.Jobs;
 using Unity.Transforms;
 
 namespace ie.TUDublin.GE2.Systems.Steering {
@@ -29,25 +28,24 @@ namespace ie.TUDublin.GE2.Systems.Steering {
             };
 
             _boidQuery = GetEntityQuery(boidQueryDesc);
-
         }
 
         protected override void OnUpdate() {
 
             float dt = Time.DeltaTime;
             
-            var seekHandle = GetComponentTypeHandle<SeekData>(); 
-            var arriveHandle = GetComponentTypeHandle<ArriveData>();
-            var pursueHandle = GetComponentTypeHandle<PursueData>();
-            var fleeHandle = GetComponentTypeHandle<FleeData>();
-            var wanderHandle = GetComponentTypeHandle<WanderData>();
-            var constrainHandle = GetComponentTypeHandle<ConstrainData>();
+            var seekHandle = GetComponentTypeHandle<SeekData>(true); 
+            var arriveHandle = GetComponentTypeHandle<ArriveData>(true);
+            var pursueHandle = GetComponentTypeHandle<PursueData>(true);
+            var fleeHandle = GetComponentTypeHandle<FleeData>(true);
+            var wanderHandle = GetComponentTypeHandle<WanderData>(true);
+            var constrainHandle = GetComponentTypeHandle<ConstrainData>(true);
+            var steeringHandle = GetComponentTypeHandle<ActiveSteeringData>(true);
 
             var translationHandle = GetComponentTypeHandle<Translation>();
             var rotationHandle = GetComponentTypeHandle<Rotation>();
             var boidHandle = GetComponentTypeHandle<BoidData>();
-            var steeringHandle = GetComponentTypeHandle<ActiveSteeringData>();
-
+            
             var boidJob = new BoidJob() {
                 DeltaTime = dt,
 

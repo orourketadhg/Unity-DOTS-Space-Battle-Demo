@@ -12,7 +12,7 @@ namespace ie.TUDublin.GE2.Systems.Steering {
     public struct BoidJob : IJobEntityBatch {
 
         public float DeltaTime;
-
+        
         [ReadOnly] public ComponentTypeHandle<SeekData> SeekHandle; 
         [ReadOnly] public ComponentTypeHandle<ArriveData> ArriveHandle; 
         [ReadOnly] public ComponentTypeHandle<PursueData> PursueHandle; 
@@ -37,7 +37,7 @@ namespace ie.TUDublin.GE2.Systems.Steering {
             var translationData = batchInChunk.GetNativeArray(TranslationHandle);
             var rotationData = batchInChunk.GetNativeArray(RotationHandle);
             var boidData = batchInChunk.GetNativeArray(BoidData);
-
+            
             for (int i = 0; i < batchInChunk.Count; i++) {
                 var seek = seekData[i];
                 var arrive = arriveData[i];
