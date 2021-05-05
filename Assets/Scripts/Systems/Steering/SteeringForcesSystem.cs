@@ -1,5 +1,6 @@
 ﻿using Ie.TUDublin.GE2.Components.Spaceship;
 using Ie.TUDublin.GE2.Components.Steering;
+using Ie.TUDublin.GE2.Systems.Steering.SteeringJobs;
 using Ie.TUDublin.GE2.Systems.Util;
 using Unity.Entities;
 using Unity.Jobs;
@@ -57,7 +58,7 @@ namespace Ie.TUDublin.GE2.Systems.Steering {
 
             var wanderQueryDesc = new EntityQueryDesc() {
                 All = new [] {
-                    typeof(wanderData),
+                    typeof(WanderData),
                     ComponentType.ReadOnly<Translation>(),
                     ComponentType.ReadOnly<Rotation>(),
                 }
@@ -96,7 +97,7 @@ namespace Ie.TUDublin.GE2.Systems.Steering {
             var arriveHandle = GetComponentTypeHandle<ArriveData>();
             var pursueHandle = GetComponentTypeHandle<PursueData>();
             var fleeHandle = GetComponentTypeHandle<FleeData>();
-            var wanderHandle = GetComponentTypeHandle<wanderData>();
+            var wanderHandle = GetComponentTypeHandle<WanderData>();
             var constrainHandle = GetComponentTypeHandle<ConstrainData>();
 
             // job declarations

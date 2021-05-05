@@ -7,7 +7,7 @@ using Unity.Mathematics;
 using Unity.Transforms;
 using Random = Unity.Mathematics.Random;
 
-namespace Ie.TUDublin.GE2.Systems.Steering {
+namespace Ie.TUDublin.GE2.Systems.Steering.SteeringJobs {
 
     [BurstCompile]
     public struct WanderJob : IJobEntityBatch {
@@ -19,7 +19,7 @@ namespace Ie.TUDublin.GE2.Systems.Steering {
         [ReadOnly] public ComponentTypeHandle<Translation> TranslationHandle;
         [ReadOnly] public ComponentTypeHandle<Rotation> RotationHandle;
         
-        public ComponentTypeHandle<wanderData> JitterWanderHandle;
+        public ComponentTypeHandle<WanderData> JitterWanderHandle;
 
         public void Execute(ArchetypeChunk batchInChunk, int batchIndex) {
             var wanderData = batchInChunk.GetNativeArray(JitterWanderHandle);

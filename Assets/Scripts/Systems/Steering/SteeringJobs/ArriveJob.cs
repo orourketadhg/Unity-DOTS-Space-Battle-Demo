@@ -1,29 +1,30 @@
 ﻿using Ie.TUDublin.GE2.Components.Spaceship;
 using Ie.TUDublin.GE2.Components.Steering;
+using Unity.Burst;
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
 
-namespace Ie.TUDublin.GE2.Systems.Steering {
+namespace Ie.TUDublin.GE2.Systems.Steering.SteeringJobs {
 
-    public struct PursueJob : IJobEntityBatch {
+    [BurstCompile]
+    public struct ArriveJob : IJobEntityBatch {
         
         [ReadOnly] public ComponentTypeHandle<Translation> TranslationHandle;
         [ReadOnly] public ComponentTypeHandle<TargetingData> TargetHandle;
         [ReadOnly] public ComponentTypeHandle<BoidData> BoidHandle;
 
-        public ComponentTypeHandle<PursueData> PursueHandle;
-        
+        public ComponentTypeHandle<ArriveData> ArriveHandle;
+
         public void Execute(ArchetypeChunk batchInChunk, int batchIndex) {
-            
-            var pursueData = batchInChunk.GetNativeArray(PursueHandle);
+            var arriveData = batchInChunk.GetNativeArray(ArriveHandle);
             var targetData = batchInChunk.GetNativeArray(TargetHandle);
             var boidData = batchInChunk.GetNativeArray(BoidHandle);
             var translationData = batchInChunk.GetNativeArray(TranslationHandle);
 
             for (int i = 0; i < batchInChunk.Count; i++) {
-                var pursue = pursueData[i];
+                var arrive = arriveData[i];
                 var target = targetData[i];
                 var boid = boidData[i];
                 var position = translationData[i].Value;
@@ -31,20 +32,26 @@ namespace Ie.TUDublin.GE2.Systems.Steering {
                 if (target.Target == Entity.Null) {
                     continue;
                 }
-                
-                float distanceToTarget = math.length(target.TargetPosition - position);
-                float time = distanceToTarget / boid.MaxSpeed;
 
-                var targetPosition = target.TargetPosition + pursue.TargetVelocity * time;
-                
-                var desired = targetPosition - position;
-                desired = math.normalize(desired);
-                desired *= boid.MaxSpeed;
+                var toTarget = target.TargetPosition - position;
+                float distanceToTarget = math.length(toTarget);
 
-                pursue.Force = desired - boid.Velocity;
+                if (distanceToTarget > 0) {
+
+                    float ramped = boid.MaxSpeed * ( distanceToTarget / arrive.SlowingDistance );
+                    float clamped = math.min(ramped, boid.MaxSpeed);
+                    var desired = clamped * ( toTarget / distanceToTarget );
+
+                    arrive.Force = desired - boid.Velocity;
+
+                }
+                else {
+                    arrive.Force = float3.zero;
+                }
                 
-                pursueData[i] = pursue;
+                arriveData[i] = arrive;
             }
+            
         }
         
     }

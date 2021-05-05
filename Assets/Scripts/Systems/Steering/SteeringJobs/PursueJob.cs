@@ -5,24 +5,25 @@ using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
 
-namespace Ie.TUDublin.GE2.Systems.Steering {
+namespace Ie.TUDublin.GE2.Systems.Steering.SteeringJobs {
 
-    public struct FleeJob : IJobEntityBatch{
+    public struct PursueJob : IJobEntityBatch {
         
         [ReadOnly] public ComponentTypeHandle<Translation> TranslationHandle;
         [ReadOnly] public ComponentTypeHandle<TargetingData> TargetHandle;
         [ReadOnly] public ComponentTypeHandle<BoidData> BoidHandle;
 
-        public ComponentTypeHandle<FleeData> FleeHandle;
-
+        public ComponentTypeHandle<PursueData> PursueHandle;
+        
         public void Execute(ArchetypeChunk batchInChunk, int batchIndex) {
-            var fleeData = batchInChunk.GetNativeArray(FleeHandle);
+            
+            var pursueData = batchInChunk.GetNativeArray(PursueHandle);
             var targetData = batchInChunk.GetNativeArray(TargetHandle);
             var boidData = batchInChunk.GetNativeArray(BoidHandle);
             var translationData = batchInChunk.GetNativeArray(TranslationHandle);
 
             for (int i = 0; i < batchInChunk.Count; i++) {
-                var flee = fleeData[i];
+                var pursue = pursueData[i];
                 var target = targetData[i];
                 var boid = boidData[i];
                 var position = translationData[i].Value;
@@ -30,17 +31,22 @@ namespace Ie.TUDublin.GE2.Systems.Steering {
                 if (target.Target == Entity.Null) {
                     continue;
                 }
+                
+                float distanceToTarget = math.length(target.TargetPosition - position);
+                float time = distanceToTarget / boid.MaxSpeed;
 
-                var desired = target.TargetPosition - position;
+                var targetPosition = target.TargetPosition + pursue.TargetVelocity * time;
+                
+                var desired = targetPosition - position;
                 desired = math.normalize(desired);
                 desired *= boid.MaxSpeed;
 
-                flee.Force = -(desired - boid.Velocity);
+                pursue.Force = desired - boid.Velocity;
                 
-                fleeData[i] = flee;
+                pursueData[i] = pursue;
             }
-            
         }
+        
     }
 
 }
