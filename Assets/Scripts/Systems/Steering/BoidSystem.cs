@@ -3,7 +3,6 @@ using Ie.TUDublin.GE2.Util;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
-using UnityEngine;
 
 namespace Ie.TUDublin.GE2.Systems.Steering {
 
@@ -18,14 +17,13 @@ namespace Ie.TUDublin.GE2.Systems.Steering {
                 .WithName("SteeringBehaviourForceAccumulationJob")
                 .WithBurst()
                 .ForEach((Entity entity, int entityInQueryIndex, int nativeThreadIndex, ref BoidData spaceshipBoidData, ref Translation translation, ref Rotation rotation) => {
-
-                    // localise boid data
+                    
                     var boidData = spaceshipBoidData;
                     
                     var force = float3.zero;
 
-                    if (HasComponent<JitterWanderData>(entity)) {
-                        var wanderData = GetComponent<JitterWanderData>(entity);
+                    if (HasComponent<wanderData>(entity)) {
+                        var wanderData = GetComponent<wanderData>(entity);
                         force += wanderData.Force * wanderData.Weight;
                         force = MathUtil.ClampMagnitude(force, boidData.MaxForce);
                     }

@@ -28871,31 +28871,102 @@ MonoBehaviour:
   laserSpeed: 1
   projectileLifetime: 5
   firingRate: 0.25
---- !u!114 &-6790924269448940087
-MonoBehaviour:
+--- !u!1 &3058385294203771266
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3058385294203864482}
+  - component: {fileID: 3058385294206731650}
+  - component: {fileID: 3058385294205765442}
+  - component: {fileID: 1748580162641509996}
+  - component: {fileID: 1817656614311307674}
+  - component: {fileID: -3893726958242487086}
+  - component: {fileID: 9124863621174149981}
+  - component: {fileID: 7947849812944048938}
+  m_Layer: 0
+  m_Name: 'Enemy Battleship '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3058385294203864482
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3058385294203771266}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 982168421}
+  - {fileID: 1938593668}
+  - {fileID: 1725903459}
+  - {fileID: 1399264658}
+  - {fileID: 42755355}
+  - {fileID: 417448682}
+  - {fileID: 6772925435999319828}
+  - {fileID: 2254959179481565418}
+  - {fileID: 1320997579432886985}
+  - {fileID: 3193011130345667035}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &3058385294206731650
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3058385294203771266}
+  m_Mesh: {fileID: 4300000, guid: 7ce2f530656caba4fbca6ba3d6e0a6da, type: 3}
+--- !u!23 &3058385294205765442
+MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3058385294203771266}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8274e162648848f79825f1dc814d3a77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Value: 125
---- !u!114 &-3893726958242487086
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3058385294203771266}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35fa75b4d9224668b3032bbcf0003524, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: c207569430eae6e419979e7657514301, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &1748580162641509996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29052,7 +29123,7 @@ MonoBehaviour:
         Tag07: 0
     m_SerializedVersion: 1
   m_SerializedVersion: 1
---- !u!114 &2761651782693156533
+--- !u!114 &-3893726958242487086
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -29061,11 +29132,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3058385294203771266}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78b9a96b0bcf43dabdf61008c4020214, type: 3}
+  m_Script: {fileID: 11500000, guid: 35fa75b4d9224668b3032bbcf0003524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Value: 125
---- !u!114 &3743560482203073123
+--- !u!114 &9124863621174149981
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -29074,47 +29144,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3058385294203771266}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccea9ea98e38942e0b0938c27ed1903e, type: 3}
+  m_Script: {fileID: 11500000, guid: a7ecb652c9cb49c8af744895b7fbd6e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MotionType: 0
-  m_Smoothing: 0
-  m_Mass: 1
-  m_LinearDamping: 0.01
-  m_AngularDamping: 0.05
-  m_InitialLinearVelocity:
-    x: 0
-    y: 0
-    z: 0
-  m_InitialAngularVelocity:
-    x: 0
-    y: 0
-    z: 0
-  m_GravityFactor: 0
-  m_OverrideDefaultMassDistribution: 0
-  m_CenterOfMass:
-    x: 0
-    y: 0
-    z: 0
-  m_Orientation:
-    Value:
-      x: 0
-      y: 0
-      z: 0
-    RotationOrder: 4
-  m_InertiaTensor:
-    x: 0.4
-    y: 0.4
-    z: 0.4
-  m_CustomTags:
-    Tag00: 0
-    Tag01: 0
-    Tag02: 0
-    Tag03: 0
-    Tag04: 0
-    Tag05: 0
-    Tag06: 0
-    Tag07: 0
+  shipHealth: 125
+  collisionDamage: 125
+  attackRange: 50
 --- !u!114 &7947849812944048938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29127,15 +29162,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78728fb7e2a743d3a9f5b4fd4a8d23d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Target: {fileID: 0}
-  Mass: 0
-  Banking: 0
-  Damping: 0
-  Force:
-    x: 0
-    y: 0
-    z: 0
-  MaxForce: 0
   Velocity:
     x: 0
     y: 0
@@ -29148,9 +29174,16 @@ MonoBehaviour:
     x: 0
     y: 0
     z: 0
+  Force:
+    x: 0
+    y: 0
+    z: 0
+  MaxForce: 0
   Speed: 0
   MaxSpeed: 0
-  AttackDistance: 0
+  Mass: 0
+  Banking: 0
+  Damping: 0
 --- !u!1 &3591530552451309974
 GameObject:
   m_ObjectHideFlags: 0
@@ -29292,62 +29325,3 @@ MonoBehaviour:
   laserSpeed: 1
   projectileLifetime: 5
   firingRate: 0.25
---- !u!1001 &3058385294203739938
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 100000, guid: 7ce2f530656caba4fbca6ba3d6e0a6da, type: 3}
-      propertyPath: m_Name
-      value: 'Enemy Battleship '
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 7ce2f530656caba4fbca6ba3d6e0a6da, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 7ce2f530656caba4fbca6ba3d6e0a6da, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 7ce2f530656caba4fbca6ba3d6e0a6da, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 7ce2f530656caba4fbca6ba3d6e0a6da, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 7ce2f530656caba4fbca6ba3d6e0a6da, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 7ce2f530656caba4fbca6ba3d6e0a6da, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 7ce2f530656caba4fbca6ba3d6e0a6da, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 7ce2f530656caba4fbca6ba3d6e0a6da, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 7ce2f530656caba4fbca6ba3d6e0a6da, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 7ce2f530656caba4fbca6ba3d6e0a6da, type: 3}
---- !u!4 &3058385294203864482 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400000, guid: 7ce2f530656caba4fbca6ba3d6e0a6da, type: 3}
-  m_PrefabInstance: {fileID: 3058385294203739938}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &3058385294203771266 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100000, guid: 7ce2f530656caba4fbca6ba3d6e0a6da, type: 3}
-  m_PrefabInstance: {fileID: 3058385294203739938}
-  m_PrefabAsset: {fileID: 0}

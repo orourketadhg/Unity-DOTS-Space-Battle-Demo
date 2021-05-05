@@ -5,21 +5,21 @@ using Unity.Collections.LowLevel.Unsafe;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
-using UnityEngine;
 using Random = Unity.Mathematics.Random;
 
 namespace Ie.TUDublin.GE2.Systems.Steering {
 
-    // [BurstCompile]
+    [BurstCompile]
     public struct WanderJob : IJobEntityBatch {
         
         [NativeSetThreadIndex] private int _nativeThreadIndex;
         [NativeDisableParallelForRestriction] public NativeArray<Random> RandomArray;
         public float DeltaTime;
         
-        public ComponentTypeHandle<JitterWanderData> JitterWanderHandle;
         [ReadOnly] public ComponentTypeHandle<Translation> TranslationHandle;
         [ReadOnly] public ComponentTypeHandle<Rotation> RotationHandle;
+        
+        public ComponentTypeHandle<wanderData> JitterWanderHandle;
 
         public void Execute(ArchetypeChunk batchInChunk, int batchIndex) {
             var wanderData = batchInChunk.GetNativeArray(JitterWanderHandle);

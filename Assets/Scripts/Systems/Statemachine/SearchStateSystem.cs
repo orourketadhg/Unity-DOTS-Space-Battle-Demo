@@ -1,5 +1,6 @@
-﻿using Ie.TUDublin.GE2.Components.Statemachine;
-using Ie.TUDublin.GE2.Components.Steering;
+﻿using Ie.TUDublin.GE2.Components.Spaceship;
+using Ie.TUDublin.GE2.Components.Statemachine;
+using Ie.TUDublin.GE2.Systems.Spaceship;
 using Ie.TUDublin.GE2.Systems.Util;
 using Unity.Entities;
 
@@ -20,12 +21,12 @@ namespace Ie.TUDublin.GE2.Systems.Statemachine {
             Entities
                 .WithName("SearchingState")
                 .WithBurst()
-                .ForEach((Entity entity, int entityInQueryIndex, int nativeThreadIndex, in BoidData boidData) => {
+                .ForEach((Entity entity, int entityInQueryIndex, int nativeThreadIndex, in TargetingData targetingData) => {
 
-                    if (boidData.Target == Entity.Null) {
+                    if (targetingData.Target == Entity.Null) {
                         StatemachineUtil.TransitionToSearching(ecb, entityInQueryIndex, entity);
                     }
-                    else if (boidData.Target != Entity.Null && HasComponent<SearchState>(entity)) {
+                    else if (targetingData.Target != Entity.Null && HasComponent<SearchState>(entity)) {
                         StatemachineUtil.TransitionFromSearching(ecb, entityInQueryIndex, entity);
                     }
                     

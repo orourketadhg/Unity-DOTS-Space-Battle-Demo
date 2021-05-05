@@ -1,4 +1,5 @@
-﻿using Ie.TUDublin.GE2.Components.Statemachine;
+﻿using Ie.TUDublin.GE2.Components.Spaceship;
+using Ie.TUDublin.GE2.Components.Statemachine;
 using Ie.TUDublin.GE2.Components.Steering;
 using Ie.TUDublin.GE2.Systems.Util;
 using Unity.Entities;
@@ -9,19 +10,29 @@ namespace Ie.TUDublin.GE2.Systems.Steering {
 
     public class SteeringForcesSystem : SystemBase {
 
-        private EntityQuery _jitterWanderQuery;
-        
-        protected override void OnCreate() {
+        private EntityQuery _seekQuery;
+        private EntityQuery _wanderQuery;
 
-            var wanderQueryDesc = new EntityQueryDesc() {
+        protected override void OnCreate() {
+            
+            var seekQueryDesc = new EntityQueryDesc() {
                 All = new [] {
-                    typeof(JitterWanderData),
+                    typeof(wanderData),
                     ComponentType.ReadOnly<Translation>(),
                     ComponentType.ReadOnly<Rotation>(),
                 }
             };
 
-            _jitterWanderQuery = GetEntityQuery(wanderQueryDesc);
+            var wanderQueryDesc = new EntityQueryDesc() {
+                All = new [] {
+                    typeof(wanderData),
+                    ComponentType.ReadOnly<Translation>(),
+                    ComponentType.ReadOnly<Rotation>(),
+                }
+            };
+            
+            _seekQuery = GetEntityQuery(seekQueryDesc);
+            _wanderQuery = GetEntityQuery(wanderQueryDesc);
         }
 
         protected override void OnUpdate() {
@@ -32,20 +43,32 @@ namespace Ie.TUDublin.GE2.Systems.Steering {
             var translationHandle = GetComponentTypeHandle<Translation>();
             var rotationHandle = GetComponentTypeHandle<Rotation>();
             var boidHandle = GetComponentTypeHandle<BoidData>();
-            var jitterWanderHandle = GetComponentTypeHandle<JitterWanderData>();
+            var targetingHandle = GetComponentTypeHandle<TargetingData>();
+
+            var seekHandle = GetComponentTypeHandle<SeekData>(); 
+            var wanderHandle = GetComponentTypeHandle<wanderData>();
+
+            var seekJob = new SeekJob() {
+                TranslationHandle = translationHandle,
+                BoidHandle = boidHandle,
+                TargetHandle = targetingHandle,
+                SeekHandle = seekHandle
+            };
 
             var wanderJob = new WanderJob() {
                 RandomArray = randomArray,
                 DeltaTime = dt,
 
-                JitterWanderHandle = jitterWanderHandle,
                 TranslationHandle = translationHandle,
-                RotationHandle = rotationHandle
+                RotationHandle = rotationHandle,
+                JitterWanderHandle = wanderHandle
             };
             
-            var jitterWanderJobHandle = wanderJob.ScheduleParallel(_jitterWanderQuery, 1, Dependency);
+            var seekJobHandle = wanderJob.ScheduleParallel(_seekQuery, 1, Dependency);
+            var wanderJobHandle = wanderJob.ScheduleParallel(_wanderQuery, 1, Dependency);
             
-            Dependency = JobHandle.CombineDependencies(Dependency, jitterWanderJobHandle);
+            Dependency = JobHandle.CombineDependencies(Dependency, seekJobHandle);
+            Dependency = JobHandle.CombineDependencies(Dependency, wanderJobHandle);
         }
         
     }

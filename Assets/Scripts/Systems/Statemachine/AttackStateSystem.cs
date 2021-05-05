@@ -1,5 +1,6 @@
-﻿using Ie.TUDublin.GE2.Components.Statemachine;
-using Ie.TUDublin.GE2.Components.Steering;
+﻿using Ie.TUDublin.GE2.Components.Spaceship;
+using Ie.TUDublin.GE2.Components.Statemachine;
+using Ie.TUDublin.GE2.Systems.Spaceship;
 using Ie.TUDublin.GE2.Systems.Util;
 using Unity.Entities;
 using Unity.Mathematics;
@@ -22,22 +23,22 @@ namespace Ie.TUDublin.GE2.Systems.Statemachine {
             Entities
                 .WithName("AttackingState")
                 .WithBurst()
-                .ForEach((Entity entity, int entityInQueryIndex, int nativeThreadIndex, in Translation position, in BoidData boidData) => {
+                .ForEach((Entity entity, int entityInQueryIndex, int nativeThreadIndex, in Translation position, in TargetingData targetingData) => {
 
-                    if (boidData.Target == Entity.Null) {
+                    if (targetingData.Target == Entity.Null) {
                         if (HasComponent<AttackingState>(entity)) {
                             StatemachineUtil.TransitionFromAttacking(ecb, entityInQueryIndex, entity);
                         }
                         return;
                     }
                     
-                    var targetPosition = GetComponent<Translation>(boidData.Target).Value;
+                    var targetPosition = GetComponent<Translation>(targetingData.Target).Value;
                     float distanceToTarget = math.distance(position.Value, targetPosition);
 
-                    if (distanceToTarget > boidData.AttackDistance) {
+                    if (distanceToTarget > targetingData.AttackDistance) {
                         StatemachineUtil.TransitionFromAttacking(ecb, entityInQueryIndex, entity);
                     }
-                    if (distanceToTarget <= boidData.AttackDistance && !HasComponent<AttackingState>(entity)) {
+                    if (distanceToTarget <= targetingData.AttackDistance && !HasComponent<AttackingState>(entity)) {
                         StatemachineUtil.TransitionToAttacking(ecb, entityInQueryIndex, entity);
                     }
                     
