@@ -12,6 +12,7 @@ namespace Ie.TUDublin.GE2.Systems.Steering {
         private EntityQuery _seekQuery;
         private EntityQuery _arriveQuery;
         private EntityQuery _pursueQuery;
+        private EntityQuery _fleeQuery;
         private EntityQuery _wanderQuery;
         private EntityQuery _constrainQuery;
 
@@ -44,6 +45,15 @@ namespace Ie.TUDublin.GE2.Systems.Steering {
                     ComponentType.ReadOnly<Translation>(),
                 }
             };
+            
+            var fleeQueryDesc = new EntityQueryDesc() {
+                All = new [] {
+                    typeof(FleeData),
+                    ComponentType.ReadOnly<BoidData>(), 
+                    ComponentType.ReadOnly<TargetingData>(), 
+                    ComponentType.ReadOnly<Translation>(),
+                }
+            };
 
             var wanderQueryDesc = new EntityQueryDesc() {
                 All = new [] {
@@ -64,6 +74,7 @@ namespace Ie.TUDublin.GE2.Systems.Steering {
             _seekQuery = GetEntityQuery(seekQueryDesc);
             _arriveQuery = GetEntityQuery(arriveQueryDesc);
             _pursueQuery = GetEntityQuery(pursueQueryDesc);
+            _fleeQuery = GetEntityQuery(fleeQueryDesc);
             _wanderQuery = GetEntityQuery(wanderQueryDesc);
             _constrainQuery = GetEntityQuery(constrainQueryDesc);
             
@@ -84,6 +95,7 @@ namespace Ie.TUDublin.GE2.Systems.Steering {
             var seekHandle = GetComponentTypeHandle<SeekData>(); 
             var arriveHandle = GetComponentTypeHandle<ArriveData>();
             var pursueHandle = GetComponentTypeHandle<PursueData>();
+            var fleeHandle = GetComponentTypeHandle<FleeData>();
             var wanderHandle = GetComponentTypeHandle<wanderData>();
             var constrainHandle = GetComponentTypeHandle<ConstrainData>();
 
@@ -108,6 +120,13 @@ namespace Ie.TUDublin.GE2.Systems.Steering {
                 TargetHandle = targetingHandle,
                 PursueHandle = pursueHandle
             };
+            
+            var fleeJob = new FleeJob() {
+                TranslationHandle = translationHandle,
+                BoidHandle = boidHandle,
+                TargetHandle = targetingHandle,
+                FleeHandle = fleeHandle
+            };
 
             var wanderJob = new WanderJob() {
                 RandomArray = randomArray,
@@ -127,6 +146,7 @@ namespace Ie.TUDublin.GE2.Systems.Steering {
             var seekJobHandle = seekJob.ScheduleParallel(_seekQuery, 1, Dependency);
             var arriveJobHandle = arriveJob.ScheduleParallel(_arriveQuery, 1, Dependency);
             var pursueJobHandle = pursueJob.ScheduleParallel(_pursueQuery, 1, Dependency);
+            var fleeJobHandle = fleeJob.ScheduleParallel(_fleeQuery, 1, Dependency);
             var wanderJobHandle = wanderJob.ScheduleParallel(_wanderQuery, 1, Dependency);
             var constrainJobHandle = constrainJob.ScheduleParallel(_constrainQuery, 1, Dependency);
             
@@ -134,6 +154,7 @@ namespace Ie.TUDublin.GE2.Systems.Steering {
             Dependency = JobHandle.CombineDependencies(Dependency, seekJobHandle);
             Dependency = JobHandle.CombineDependencies(Dependency, arriveJobHandle);
             Dependency = JobHandle.CombineDependencies(Dependency, pursueJobHandle);
+            Dependency = JobHandle.CombineDependencies(Dependency, fleeJobHandle);
             Dependency = JobHandle.CombineDependencies(Dependency, wanderJobHandle);
             Dependency = JobHandle.CombineDependencies(Dependency, constrainJobHandle);
         }

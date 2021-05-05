@@ -39,6 +39,12 @@ namespace Ie.TUDublin.GE2.Systems.Steering {
                         force += wanderData.Force * wanderData.Weight;
                         force = MathUtil.ClampMagnitude(force, boidData.MaxForce);
                     }
+                    
+                    if (HasComponent<FleeData>(entity)) {
+                        var wanderData = GetComponent<FleeData>(entity);
+                        force += wanderData.Force * wanderData.Weight;
+                        force = MathUtil.ClampMagnitude(force, boidData.MaxForce);
+                    }
 
                     if (HasComponent<wanderData>(entity)) {
                         var wanderData = GetComponent<wanderData>(entity);
