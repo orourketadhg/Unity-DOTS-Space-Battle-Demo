@@ -39,7 +39,6 @@ namespace Ie.TUDublin.GE2.Systems.Steering {
                     boidData.Speed = math.length(boidData.Velocity);
                     if (boidData.Speed > 0) {
                         
-                        // look rotation and banking
                         var tempUp = math.lerp(boidData.Up, math.up() + (boidData.Acceleration * boidData.Banking), dt * 3.0f);
                         rotation.Value = quaternion.LookRotation(boidData.Velocity, tempUp);
                         boidData.Up = tempUp * math.up();

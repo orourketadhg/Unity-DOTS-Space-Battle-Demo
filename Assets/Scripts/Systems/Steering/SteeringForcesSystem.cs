@@ -18,9 +18,6 @@ namespace Ie.TUDublin.GE2.Systems.Steering {
                     typeof(JitterWanderData),
                     ComponentType.ReadOnly<Translation>(),
                     ComponentType.ReadOnly<Rotation>(),
-                },
-                Any = new ComponentType[] {
-                    typeof(SearchState)
                 }
             };
 

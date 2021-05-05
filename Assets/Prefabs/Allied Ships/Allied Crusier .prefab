@@ -29588,7 +29588,6 @@ GameObject:
   - component: {fileID: 5380226125107407948}
   - component: {fileID: 5380226125108407948}
   - component: {fileID: 4231726156833818463}
-  - component: {fileID: 4051031770205951528}
   - component: {fileID: 7982318139592930166}
   - component: {fileID: 7403839666779707163}
   - component: {fileID: 745362041339798625}
@@ -29704,56 +29703,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ConversionMode: 0
---- !u!114 &4051031770205951528
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5380226125110603852}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccea9ea98e38942e0b0938c27ed1903e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_MotionType: 0
-  m_Smoothing: 0
-  m_Mass: 1
-  m_LinearDamping: 0.01
-  m_AngularDamping: 0.05
-  m_InitialLinearVelocity:
-    x: 0
-    y: 0
-    z: 0
-  m_InitialAngularVelocity:
-    x: 0
-    y: 0
-    z: 0
-  m_GravityFactor: 0
-  m_OverrideDefaultMassDistribution: 0
-  m_CenterOfMass:
-    x: 0
-    y: 0
-    z: 0
-  m_Orientation:
-    Value:
-      x: 0
-      y: 0
-      z: 0
-    RotationOrder: 4
-  m_InertiaTensor:
-    x: 0.4
-    y: 0.4
-    z: 0.4
-  m_CustomTags:
-    Tag00: 0
-    Tag01: 0
-    Tag02: 0
-    Tag03: 0
-    Tag04: 0
-    Tag05: 0
-    Tag06: 0
-    Tag07: 0
 --- !u!114 &7982318139592930166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29949,13 +29898,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Target: {fileID: 0}
   Mass: 1
-  Banking: 0
-  Damping: 0
+  Banking: 0.5
+  Damping: 0.01
   Force:
     x: 0
     y: 0
     z: 0
-  MaxForce: 400
+  MaxForce: 10
   Velocity:
     x: 0
     y: 0
@@ -29969,7 +29918,7 @@ MonoBehaviour:
     y: 0
     z: 0
   Speed: 0
-  MaxSpeed: 100
+  MaxSpeed: 10
   AttackDistance: 25
 --- !u!114 &321653849954526277
 MonoBehaviour:
@@ -29988,10 +29937,18 @@ MonoBehaviour:
     y: 0
     z: 0
   Weight: 1
-  Distance: 20
-  Radius: 10
-  Jitter: 100
+  Distance: 10
+  Radius: 5
+  Jitter: 1
   Target:
+    x: 0
+    y: 0
+    z: 0
+  LocalTarget:
+    x: 0
+    y: 0
+    z: 0
+  WorldTarget:
     x: 0
     y: 0
     z: 0

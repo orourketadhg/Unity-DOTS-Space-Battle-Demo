@@ -5,11 +5,12 @@ using Unity.Collections.LowLevel.Unsafe;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
+using UnityEngine;
 using Random = Unity.Mathematics.Random;
 
 namespace Ie.TUDublin.GE2.Systems.Steering {
 
-    [BurstCompile]
+    // [BurstCompile]
     public struct WanderJob : IJobEntityBatch {
         
         [NativeSetThreadIndex] private int _nativeThreadIndex;
@@ -31,17 +32,18 @@ namespace Ie.TUDublin.GE2.Systems.Steering {
                 var wander = wanderData[i];
                 var position = translationData[i].Value;
                 var rotation = rotationData[i].Value;
-
+                
                 var displacement = wander.Jitter * random.NextFloat3Direction() * DeltaTime;
                 wander.Target += displacement;
                 wander.Target = math.normalize(wander.Target);
                 wander.Target *= wander.Radius;
-
-                var localTarget = ( math.forward() * wander.Distance ) + wander.Distance;
                 
-                var worldTarget = math.mul(rotation, localTarget) + position;
-                wander.Force = ( worldTarget - position );
+                wander.LocalTarget = ( new float3(0, 0, 1) * wander.Distance) + wander.Target;
+                
+                wander.WorldTarget = math.mul(rotation, wander.LocalTarget) + position;
+                wander.Force = ( wander.WorldTarget - position );
 
+                wanderData[i] = wander;
             }
             
             RandomArray[_nativeThreadIndex] = random;

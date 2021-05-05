@@ -13,6 +13,8 @@ namespace Ie.TUDublin.GE2.Components.Steering {
         public float Jitter;
 
         public float3 Target;
+        public float3 LocalTarget;
+        public float3 WorldTarget;
 
     }
 

@@ -9646,11 +9646,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 0}
-  TargetPosition:
+  Mass: 0
+  Banking: 0
+  Damping: 0
+  Force:
     x: 0
     y: 0
     z: 0
+  MaxForce: 0
+  Velocity:
+    x: 0
+    y: 0
+    z: 0
+  Acceleration:
+    x: 0
+    y: 0
+    z: 0
+  Up:
+    x: 0
+    y: 0
+    z: 0
+  Speed: 0
   MaxSpeed: 0
+  AttackDistance: 0
 --- !u!114 &810361524113136250
 MonoBehaviour:
   m_ObjectHideFlags: 0
