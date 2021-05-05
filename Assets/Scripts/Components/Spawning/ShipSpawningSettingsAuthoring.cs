@@ -4,7 +4,7 @@ using Unity.Entities;
 using Unity.Mathematics;
 using UnityEngine;
 
-namespace Ie.TUDublin.GE2.Components.Spawning {
+namespace ie.TUDublin.GE2.Components.Spawning {
 
     public class ShipSpawningSettingsAuthoring : MonoBehaviour, IConvertGameObjectToEntity, IDeclareReferencedPrefabs {
 

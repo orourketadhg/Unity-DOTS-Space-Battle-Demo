@@ -1,9 +1,9 @@
-﻿using Ie.TUDublin.GE2.Components.Steering;
+﻿using ie.TUDublin.GE2.Components.Steering;
 using Unity.Entities;
 using Unity.Jobs;
 using Unity.Transforms;
 
-namespace Ie.TUDublin.GE2.Systems.Steering {
+namespace ie.TUDublin.GE2.Systems.Steering {
 
     [UpdateAfter(typeof(SteeringForcesSystem))]
     public class BoidSystem : SystemBase {
@@ -63,10 +63,8 @@ namespace Ie.TUDublin.GE2.Systems.Steering {
                 BoidData = boidHandle
             };
 
-            var boidJobHandle = boidJob.ScheduleParallel(_boidQuery, 1, Dependency);
-            Dependency = JobHandle.CombineDependencies(Dependency, boidJobHandle);
-
-
+            Dependency = boidJob.ScheduleParallel(_boidQuery, 1, Dependency);
+            
         }
 
     }

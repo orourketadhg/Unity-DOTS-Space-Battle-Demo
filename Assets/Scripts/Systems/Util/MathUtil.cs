@@ -1,7 +1,7 @@
 ﻿using Unity.Burst;
 using Unity.Mathematics;
 
-namespace Ie.TUDublin.GE2.Systems.Util {
+namespace ie.TUDublin.GE2.Systems.Util {
 
     [BurstCompile]
     public static class MathUtil {

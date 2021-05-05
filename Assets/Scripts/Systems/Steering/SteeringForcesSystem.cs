@@ -1,12 +1,12 @@
-﻿using Ie.TUDublin.GE2.Components.Spaceship;
-using Ie.TUDublin.GE2.Components.Steering;
-using Ie.TUDublin.GE2.Systems.Steering.SteeringJobs;
-using Ie.TUDublin.GE2.Systems.Util;
+﻿using ie.TUDublin.GE2.Components.Spaceship;
+using ie.TUDublin.GE2.Components.Steering;
+using ie.TUDublin.GE2.Systems.Steering.SteeringJobs;
+using ie.TUDublin.GE2.Systems.Util;
 using Unity.Entities;
 using Unity.Jobs;
 using Unity.Transforms;
 
-namespace Ie.TUDublin.GE2.Systems.Steering {
+namespace ie.TUDublin.GE2.Systems.Steering {
 
     public class SteeringForcesSystem : SystemBase {
 
@@ -144,20 +144,13 @@ namespace Ie.TUDublin.GE2.Systems.Steering {
             };
             
             // scheduling
-            var seekJobHandle = seekJob.ScheduleParallel(_seekQuery, 1, Dependency);
-            var arriveJobHandle = arriveJob.ScheduleParallel(_arriveQuery, 1, Dependency);
-            var pursueJobHandle = pursueJob.ScheduleParallel(_pursueQuery, 1, Dependency);
-            var fleeJobHandle = fleeJob.ScheduleParallel(_fleeQuery, 1, Dependency);
-            var wanderJobHandle = wanderJob.ScheduleParallel(_wanderQuery, 1, Dependency);
-            var constrainJobHandle = constrainJob.ScheduleParallel(_constrainQuery, 1, Dependency);
+            Dependency = seekJob.ScheduleParallel(_seekQuery, 1, Dependency);
+            Dependency = arriveJob.ScheduleParallel(_arriveQuery, 1, Dependency);
+            Dependency = pursueJob.ScheduleParallel(_pursueQuery, 1, Dependency);
+            Dependency = fleeJob.ScheduleParallel(_fleeQuery, 1, Dependency);
+            Dependency = wanderJob.ScheduleParallel(_wanderQuery, 1, Dependency);
+            Dependency = constrainJob.ScheduleParallel(_constrainQuery, 1, Dependency);
             
-            // dependencies
-            Dependency = JobHandle.CombineDependencies(Dependency, seekJobHandle);
-            Dependency = JobHandle.CombineDependencies(Dependency, arriveJobHandle);
-            Dependency = JobHandle.CombineDependencies(Dependency, pursueJobHandle);
-            Dependency = JobHandle.CombineDependencies(Dependency, fleeJobHandle);
-            Dependency = JobHandle.CombineDependencies(Dependency, wanderJobHandle);
-            Dependency = JobHandle.CombineDependencies(Dependency, constrainJobHandle);
         }
         
     }

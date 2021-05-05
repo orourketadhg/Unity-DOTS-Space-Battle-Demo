@@ -1,7 +1,7 @@
 ﻿using Unity.Entities;
 using UnityEngine;
 
-namespace Ie.TUDublin.GE2.Components.Spaceship {
+namespace ie.TUDublin.GE2.Components.Spaceship {
 
     public class ShipDataAuthoring : MonoBehaviour, IConvertGameObjectToEntity {
 

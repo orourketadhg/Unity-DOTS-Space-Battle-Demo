@@ -1,12 +1,11 @@
-﻿using Ie.TUDublin.GE2.Components.Spaceship;
-using Ie.TUDublin.GE2.Components.Statemachine;
-using Ie.TUDublin.GE2.Systems.Spaceship;
-using Ie.TUDublin.GE2.Systems.Util;
+﻿using ie.TUDublin.GE2.Components.Spaceship;
+using ie.TUDublin.GE2.Components.Statemachine;
+using ie.TUDublin.GE2.Systems.Util;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
 
-namespace Ie.TUDublin.GE2.Systems.Statemachine {
+namespace ie.TUDublin.GE2.Systems.Statemachine {
 
     public class AttackStateSystem : SystemBase {
 

@@ -1,9 +1,9 @@
-﻿using Ie.TUDublin.GE2.Components.Spaceship;
-using Ie.TUDublin.GE2.Components.Steering;
-using Ie.TUDublin.GE2.Components.Tags;
+﻿using ie.TUDublin.GE2.Components.Spaceship;
+using ie.TUDublin.GE2.Components.Steering;
+using ie.TUDublin.GE2.Components.Tags;
 using Unity.Entities;
 
-namespace Ie.TUDublin.GE2.Systems.Spaceship {
+namespace ie.TUDublin.GE2.Systems.Spaceship {
 
     public class SpaceshipHealthSystem : SystemBase {
 

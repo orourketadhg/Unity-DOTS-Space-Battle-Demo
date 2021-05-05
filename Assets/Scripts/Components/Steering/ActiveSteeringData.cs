@@ -1,6 +1,6 @@
 ﻿using Unity.Entities;
 
-namespace Ie.TUDublin.GE2.Components.Steering {
+namespace ie.TUDublin.GE2.Components.Steering {
 
     [GenerateAuthoringComponent]
     public struct ActiveSteeringData : IComponentData {

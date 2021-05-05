@@ -1,11 +1,11 @@
-﻿using Ie.TUDublin.GE2.Components.Spaceship;
-using Ie.TUDublin.GE2.Components.Statemachine;
+﻿using ie.TUDublin.GE2.Components.Spaceship;
+using ie.TUDublin.GE2.Components.Statemachine;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Physics;
 using Unity.Transforms;
 
-namespace Ie.TUDublin.GE2.Systems.Spaceship {
+namespace ie.TUDublin.GE2.Systems.Spaceship {
 
     public class LaserFiringSystem : SystemBase {
 

@@ -1,11 +1,10 @@
-﻿using Ie.TUDublin.GE2.Components.Spaceship;
+﻿using ie.TUDublin.GE2.Components.Spaceship;
 using Unity.Burst;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Physics;
-using UnityEngine;
 
-namespace Ie.TUDublin.GE2.Systems.Physics {
+namespace ie.TUDublin.GE2.Systems.Physics {
 
     [BurstCompile]
     public struct DamageTriggerJob : ITriggerEventsJob {

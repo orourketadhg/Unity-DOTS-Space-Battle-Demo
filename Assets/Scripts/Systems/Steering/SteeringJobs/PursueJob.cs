@@ -1,11 +1,11 @@
-﻿using Ie.TUDublin.GE2.Components.Spaceship;
-using Ie.TUDublin.GE2.Components.Steering;
+﻿using ie.TUDublin.GE2.Components.Spaceship;
+using ie.TUDublin.GE2.Components.Steering;
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
 
-namespace Ie.TUDublin.GE2.Systems.Steering.SteeringJobs {
+namespace ie.TUDublin.GE2.Systems.Steering.SteeringJobs {
 
     public struct PursueJob : IJobEntityBatch {
         

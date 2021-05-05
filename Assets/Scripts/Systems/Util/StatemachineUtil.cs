@@ -1,8 +1,8 @@
-﻿using Ie.TUDublin.GE2.Components.Statemachine;
+﻿using ie.TUDublin.GE2.Components.Statemachine;
 using Unity.Burst;
 using Unity.Entities;
 
-namespace Ie.TUDublin.GE2.Systems.Util {
+namespace ie.TUDublin.GE2.Systems.Util {
 
     [BurstCompile]
     public static class StatemachineUtil {

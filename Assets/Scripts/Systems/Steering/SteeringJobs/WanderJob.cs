@@ -1,4 +1,4 @@
-﻿using Ie.TUDublin.GE2.Components.Steering;
+﻿using ie.TUDublin.GE2.Components.Steering;
 using Unity.Burst;
 using Unity.Collections;
 using Unity.Collections.LowLevel.Unsafe;
@@ -7,7 +7,7 @@ using Unity.Mathematics;
 using Unity.Transforms;
 using Random = Unity.Mathematics.Random;
 
-namespace Ie.TUDublin.GE2.Systems.Steering.SteeringJobs {
+namespace ie.TUDublin.GE2.Systems.Steering.SteeringJobs {
 
     [BurstCompile]
     public struct WanderJob : IJobEntityBatch {

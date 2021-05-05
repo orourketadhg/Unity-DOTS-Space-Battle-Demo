@@ -1,12 +1,12 @@
-﻿using Ie.TUDublin.GE2.Components.Spaceship;
-using Ie.TUDublin.GE2.Systems.Physics;
-using Ie.TUDublin.GE2.Systems.Util;
+﻿using ie.TUDublin.GE2.Components.Spaceship;
+using ie.TUDublin.GE2.Systems.Physics;
+using ie.TUDublin.GE2.Systems.Util;
 using Unity.Entities;
 using Unity.Jobs;
 using Unity.Physics;
 using Unity.Physics.Systems;
 
-namespace Ie.TUDublin.GE2.Systems.Spaceship {
+namespace ie.TUDublin.GE2.Systems.Spaceship {
 
     [UpdateBefore(typeof(SceneCleanupSystem))]
     public class DamageSystem : SystemBase {

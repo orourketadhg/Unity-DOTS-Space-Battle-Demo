@@ -1,7 +1,7 @@
 ﻿using Unity.Entities;
 using Unity.Mathematics;
 
-namespace Ie.TUDublin.GE2.Components.Steering {
+namespace ie.TUDublin.GE2.Components.Steering {
 
     [GenerateAuthoringComponent]
     public struct WanderData : IComponentData {

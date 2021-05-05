@@ -1,9 +1,9 @@
-﻿using Ie.TUDublin.GE2.Components.Spaceship;
-using Ie.TUDublin.GE2.Components.Statemachine;
-using Ie.TUDublin.GE2.Systems.Util;
+﻿using ie.TUDublin.GE2.Components.Spaceship;
+using ie.TUDublin.GE2.Components.Statemachine;
+using ie.TUDublin.GE2.Systems.Util;
 using Unity.Entities;
 
-namespace Ie.TUDublin.GE2.Systems.Statemachine {
+namespace ie.TUDublin.GE2.Systems.Statemachine {
 
     public class SearchStateSystem : SystemBase {
         

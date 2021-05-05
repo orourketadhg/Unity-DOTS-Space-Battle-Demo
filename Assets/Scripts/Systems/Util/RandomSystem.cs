@@ -4,7 +4,7 @@ using Unity.Jobs;
 using Unity.Jobs.LowLevel.Unsafe;
 using Unity.Mathematics;
 
-namespace Ie.TUDublin.GE2.Systems.Util {
+namespace ie.TUDublin.GE2.Systems.Util {
 
     [UpdateInGroup(typeof(InitializationSystemGroup))]
     public class RandomSystem : SystemBase {
