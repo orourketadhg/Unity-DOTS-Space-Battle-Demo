@@ -38,7 +38,7 @@ namespace ie.TUDublin.GE2.Systems.Steering.SteeringJobs {
                 wander.Target = math.normalize(wander.Target);
                 wander.Target *= wander.Radius;
                 
-                wander.LocalTarget = ( new float3(0, 0, 1) * wander.Distance) + wander.Target;
+                wander.LocalTarget = ( math.forward() * wander.Distance) + wander.Target;
                 
                 wander.WorldTarget = math.mul(rotation, wander.LocalTarget) + position;
                 wander.Force = ( wander.WorldTarget - position );

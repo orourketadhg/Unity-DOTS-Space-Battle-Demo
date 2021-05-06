@@ -18,6 +18,9 @@ namespace ie.TUDublin.GE2.Components.Steering {
         public float Mass;
         public float Banking;
         public float Damping;
+        public float VerticalLimiter;
+        
+        public float Weight;
     }
 
 }

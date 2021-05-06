@@ -9918,8 +9918,10 @@ MonoBehaviour:
   Speed: 0
   MaxSpeed: 17.5
   Mass: 1
-  Banking: 0.5
-  Damping: 0.01
+  Banking: 0.05
+  Damping: 0.05
+  VerticalLimiter: 0.5
+  Weight: 1
 --- !u!114 &4153218560842726840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10010,7 +10012,7 @@ MonoBehaviour:
     y: 0
     z: 0
   Weight: 0.05
-  Radius: 10
+  Radius: 7.5
   Origin:
     x: 0
     y: 0
@@ -10034,7 +10036,7 @@ MonoBehaviour:
   Weight: 2
   Distance: 2
   Radius: 1.2
-  Jitter: 10
+  Jitter: 20
   Target:
     x: 0
     y: 0

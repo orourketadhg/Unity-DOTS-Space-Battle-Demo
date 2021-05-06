@@ -69,7 +69,7 @@ namespace ie.TUDublin.GE2.Systems.Steering {
                 .WithName("BoidSystem")
                 .WithBurst()
                 .ForEach((Entity entity, int entityInQueryIndex, int nativeThreadIndex, ref Translation translation, ref Rotation rotation, ref BoidData boidData, in SteeringData steering) => {
-
+            
                     var boid = boidData;
                     
                     var force = float3.zero;
@@ -109,27 +109,31 @@ namespace ie.TUDublin.GE2.Systems.Steering {
                         force += wander.Force * wander.Weight;
                         force = MathUtil.ClampMagnitude(force, boid.MaxForce);
                     }
-                    
+            
+                    force *= boid.Weight;
                     boid.Force = MathUtil.ClampMagnitude(force, boid.MaxForce);
-                    boid.Acceleration = boid.Force / boid.Mass;
+                    
+                    var tempAcceleration = (boid.Force * boid.Weight) * (1.0f / boid.Mass);
+                    tempAcceleration.y *= boidData.VerticalLimiter;
+                    boid.Acceleration = math.lerp(boid.Acceleration, tempAcceleration, dt);
+                    
                     boid.Velocity += boid.Acceleration * dt;
-
                     boid.Velocity = MathUtil.ClampMagnitude(boid.Velocity, boid.MaxSpeed);
-
+            
                     boid.Speed = math.length(boid.Velocity);
                     if (boid.Speed > 0) {
                     
                         var tempUp = math.lerp(boid.Up, math.up() + (boid.Acceleration * boid.Banking), dt * 3.0f);
                         rotation.Value = quaternion.LookRotation(boid.Velocity, tempUp);
-                        boid.Up = tempUp * math.up();
-
+                        boid.Up = math.mul(rotation.Value, math.up());
+            
                         translation.Value += boid.Velocity * dt;
                         boid.Velocity *= ( 1.0f - ( boid.Damping * dt ) );
-
+            
                     }
-
+            
                     boidData = boid;
-
+            
                 }).ScheduleParallel();
             
         }
