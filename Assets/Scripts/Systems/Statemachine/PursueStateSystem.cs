@@ -1,12 +1,11 @@
 ﻿using ie.TUDublin.GE2.Components.Spaceship;
-using ie.TUDublin.GE2.Components.Statemachine;
 using ie.TUDublin.GE2.Systems.Util;
 using Unity.Entities;
 
 namespace ie.TUDublin.GE2.Systems.Statemachine {
 
-    public class SearchStateSystem : SystemBase {
-        
+    public class PursueStateSystem : SystemBase {
+
         private EndSimulationEntityCommandBufferSystem _entityCommandBuffer;
 
         protected override void OnCreate() {
@@ -14,28 +13,26 @@ namespace ie.TUDublin.GE2.Systems.Statemachine {
         }
 
         protected override void OnUpdate() {
-            
+
             var ecb = _entityCommandBuffer.CreateCommandBuffer().AsParallelWriter();
 
             Entities
-                .WithName("SearchingState")
+                .WithName("PursuingSystem")
                 .WithBurst()
-                .WithNone<FleeState>()
                 .ForEach((Entity entity, int entityInQueryIndex, int nativeThreadIndex, in TargetingData targetingData) => {
 
                     if (targetingData.Target == Entity.Null) {
-                        StatemachineUtil.TransitionToSearching(ecb, entityInQueryIndex, entity);
+                        StatemachineUtil.TransitionFromPursuing(ecb, entityInQueryIndex, entity);
                     }
-                    else if (targetingData.Target != Entity.Null && HasComponent<SearchState>(entity)) {
-                        StatemachineUtil.TransitionFromSearching(ecb, entityInQueryIndex, entity);
+                    else {
+                        StatemachineUtil.TransitionToPursuing(ecb, entityInQueryIndex, entity);
                     }
                     
-                }).ScheduleParallel();
+                }).Schedule();
             
             _entityCommandBuffer.AddJobHandleForProducer(Dependency);
-            
+
         }
-        
     }
 
 }

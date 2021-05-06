@@ -44,11 +44,14 @@ namespace ie.TUDublin.GE2.Systems.Spaceship {
                     if (physicsWorld.OverlapCapsule(radarPositionA, radarPositionB, radar.Radius, ref radarHits, radarFilter)) {
                         foreach (var entityHit in radarHits.Select(hit => hit.Entity)) {
                             if (HasComponent<AlliedTag>(entity) && HasComponent<EnemyTag>(entityHit)) {
+                                GetBuffer<PursuerElementData>(entityHit).Add(new PursuerElementData() {PursuerEntity = entityHit});
                                 targetingData.Target = entityHit;
                                 break;
                             }
                             
                             if (HasComponent<AlliedTag>(entityHit) && HasComponent<EnemyTag>(entity)) {
+                                
+                                GetBuffer<PursuerElementData>(entityHit).Add(new PursuerElementData() {PursuerEntity = entityHit});
                                 targetingData.Target = entityHit;
                                 break;
                             }

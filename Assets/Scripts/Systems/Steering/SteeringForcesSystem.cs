@@ -96,6 +96,7 @@ namespace ie.TUDublin.GE2.Systems.Steering {
             var rotationHandle = GetComponentTypeHandle<Rotation>(true);
             var boidHandle = GetComponentTypeHandle<BoidData>(true);
             var targetingHandle = GetComponentTypeHandle<TargetingData>(true);
+            var pursuerBufferHandle = GetBufferTypeHandle<PursuerElementData>(true);
 
             var seekHandle = GetComponentTypeHandle<SeekData>(); 
             var arriveHandle = GetComponentTypeHandle<ArriveData>();
@@ -129,7 +130,7 @@ namespace ie.TUDublin.GE2.Systems.Steering {
             var fleeJob = new FleeJob() {
                 TranslationHandle = translationHandle,
                 BoidHandle = boidHandle,
-                TargetHandle = targetingHandle,
+                PursuerBufferHandle = pursuerBufferHandle,
                 FleeHandle = fleeHandle
             };
 

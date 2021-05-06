@@ -10,28 +10,33 @@ namespace ie.TUDublin.GE2.Systems.Steering.SteeringJobs {
     public struct FleeJob : IJobEntityBatch{
         
         [ReadOnly] public ComponentTypeHandle<Translation> TranslationHandle;
-        [ReadOnly] public ComponentTypeHandle<TargetingData> TargetHandle;
         [ReadOnly] public ComponentTypeHandle<BoidData> BoidHandle;
+        [ReadOnly] public BufferTypeHandle<PursuerElementData> PursuerBufferHandle;
 
         public ComponentTypeHandle<FleeData> FleeHandle;
 
         public void Execute(ArchetypeChunk batchInChunk, int batchIndex) {
             var fleeData = batchInChunk.GetNativeArray(FleeHandle);
-            var targetData = batchInChunk.GetNativeArray(TargetHandle);
+            var pursuerBuffer = batchInChunk.GetBufferAccessor(PursuerBufferHandle);
             var boidData = batchInChunk.GetNativeArray(BoidHandle);
             var translationData = batchInChunk.GetNativeArray(TranslationHandle);
 
             for (int i = 0; i < batchInChunk.Count; i++) {
                 var flee = fleeData[i];
-                var target = targetData[i];
                 var boid = boidData[i];
                 var position = translationData[i].Value;
+                var pursuers = pursuerBuffer[i];
 
-                if (target.Target == Entity.Null) {
+                if (pursuers.IsEmpty) {
                     continue;
                 }
 
-                var desired = target.TargetPosition - position;
+                var firstPursuer = pursuers[0];
+                if (firstPursuer.PursuerEntity == Entity.Null) {
+                    continue;
+                }
+
+                var desired = firstPursuer.PursuerPosition - position;
                 desired = math.normalize(desired);
                 desired *= boid.MaxSpeed;
 

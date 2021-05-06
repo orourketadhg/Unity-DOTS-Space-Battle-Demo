@@ -23,6 +23,22 @@ namespace ie.TUDublin.GE2.Systems.Util {
             ecb.RemoveComponent<SearchState>(index, entity);
         }
         
+        public static void TransitionToFleeing(EntityCommandBuffer.ParallelWriter ecb, int index, Entity entity) {
+            ecb.AddComponent<FleeState>(index, entity);
+        }
+        
+        public static void TransitionFromFleeing(EntityCommandBuffer.ParallelWriter ecb, int index, Entity entity) {
+            ecb.RemoveComponent<FleeState>(index, entity);
+        }
+        
+        public static void TransitionToPursuing(EntityCommandBuffer.ParallelWriter ecb, int index, Entity entity) {
+            ecb.AddComponent<PursueState>(index, entity);
+        }
+        
+        public static void TransitionFromPursuing(EntityCommandBuffer.ParallelWriter ecb, int index, Entity entity) {
+            ecb.RemoveComponent<PursueState>(index, entity);
+        }
+        
         
     }
 

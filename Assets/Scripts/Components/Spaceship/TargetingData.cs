@@ -2,8 +2,7 @@
 using Unity.Mathematics;
 
 namespace ie.TUDublin.GE2.Components.Spaceship {
-
-    [GenerateAuthoringComponent]
+    
     public struct TargetingData : IComponentData {
         public Entity Target;
         public float3 TargetPosition;

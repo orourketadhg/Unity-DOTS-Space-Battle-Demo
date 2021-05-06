@@ -6,7 +6,7 @@ namespace ie.TUDublin.GE2.Components.Statemachine {
     
     public struct FleeState : IComponentData { }
 
-    public struct Pursue : IComponentData { }
+    public struct PursueState : IComponentData { }
     
     public struct SearchState : IComponentData { }
     

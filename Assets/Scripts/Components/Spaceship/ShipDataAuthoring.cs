@@ -20,6 +20,7 @@ namespace ie.TUDublin.GE2.Components.Spaceship {
             dstManager.AddComponentData(entity, new DamageData() {Value = collisionDamage});
             dstManager.AddComponentData(entity, new TargetingData() {Target = conversionSystem.GetPrimaryEntity(target), AttackDistance = attackRange});
             dstManager.AddComponentData(entity, new SteeringData());
+            dstManager.AddBuffer<PursuerElementData>(entity);
         }
     }
 

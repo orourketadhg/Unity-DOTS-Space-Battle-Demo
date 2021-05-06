@@ -9624,7 +9624,6 @@ GameObject:
   - component: {fileID: -8855195795506996575}
   - component: {fileID: -214133259131482279}
   - component: {fileID: -3380234241729505352}
-  - component: {fileID: 3729625032135145293}
   - component: {fileID: 4153218560842726840}
   - component: {fileID: -6446886993662487439}
   - component: {fileID: -2708943994495966897}
@@ -9922,24 +9921,6 @@ MonoBehaviour:
   Mass: 0
   Banking: 0
   Damping: 0
---- !u!114 &3729625032135145293
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6653221153180116363}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05952e0458974f3789a4830773331576, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Seek: 0
-  Arrive: 0
-  Pursue: 0
-  Flee: 0
-  Wander: 0
-  Constrain: 0
 --- !u!114 &4153218560842726840
 MonoBehaviour:
   m_ObjectHideFlags: 0
