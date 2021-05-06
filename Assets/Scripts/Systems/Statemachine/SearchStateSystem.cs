@@ -15,11 +15,11 @@ namespace ie.TUDublin.GE2.Systems.Statemachine {
 
         protected override void OnUpdate() {
             
-            var ecb = _entityCommandBuffer.CreateCommandBuffer().AsParallelWriter();
+            var ecb = _entityCommandBuffer.CreateCommandBuffer();
 
             Entities
                 .WithName("SearchingState")
-                .WithBurst()
+                .WithoutBurst()
                 .WithNone<FleeState>()
                 .ForEach((Entity entity, int entityInQueryIndex, int nativeThreadIndex, in TargetingData targetingData) => {
 
@@ -30,7 +30,7 @@ namespace ie.TUDublin.GE2.Systems.Statemachine {
                         StatemachineUtil.TransitionFromSearching(ecb, entityInQueryIndex, entity);
                     }
                     
-                }).ScheduleParallel();
+                }).Run();
             
             _entityCommandBuffer.AddJobHandleForProducer(Dependency);
             

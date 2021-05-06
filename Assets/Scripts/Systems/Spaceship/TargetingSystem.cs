@@ -4,32 +4,33 @@ using Unity.Entities;
 using Unity.Transforms;
 
 namespace ie.TUDublin.GE2.Systems.Spaceship {
-
+    
     public class TargetingSystem : SystemBase {
 
         protected override void OnUpdate() {
-
+            
             Entities
                 .WithName("TargetingSystem")
-                .WithBurst()
+                .WithoutBurst()
                 .ForEach((Entity entity, int entityInQueryIndex, int nativeThreadIndex, ref TargetingData targetData) => {
-                    if (targetData.Target == Entity.Null) {
+
+                    if (!EntityManager.Exists(targetData.Target) || targetData.Target == Entity.Null) {
                         return;
                     }
                     
                     targetData.TargetPosition = GetComponent<Translation>(targetData.Target).Value;
-                }).ScheduleParallel();
+                }).Run();
 
             Entities
                 .WithName("PursuingSystem")
-                .WithBurst()
+                .WithoutBurst()
                 .ForEach((Entity entity, int entityInQueryIndex, int nativeThreadIndex, ref PursueData pursueData, in TargetingData targetData) => {
-                    if (targetData.Target == Entity.Null) {
+                    if (!EntityManager.Exists(targetData.Target) || targetData.Target == Entity.Null) {
                         return;
                     }
 
                     pursueData.TargetVelocity = GetComponent<BoidData>(targetData.Target).Velocity;
-                }).ScheduleParallel();
+                }).Run();
             
             // Entities
             //     .WithName("PursuersSystem")

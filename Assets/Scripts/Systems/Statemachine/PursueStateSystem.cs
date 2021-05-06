@@ -1,9 +1,10 @@
 ﻿using ie.TUDublin.GE2.Components.Spaceship;
 using ie.TUDublin.GE2.Systems.Util;
 using Unity.Entities;
+using Unity.Transforms;
 
 namespace ie.TUDublin.GE2.Systems.Statemachine {
-
+    
     public class PursueStateSystem : SystemBase {
 
         private EndSimulationEntityCommandBufferSystem _entityCommandBuffer;
@@ -14,21 +15,21 @@ namespace ie.TUDublin.GE2.Systems.Statemachine {
 
         protected override void OnUpdate() {
 
-            var ecb = _entityCommandBuffer.CreateCommandBuffer().AsParallelWriter();
+            var ecb = _entityCommandBuffer.CreateCommandBuffer();
 
             Entities
                 .WithName("PursuingSystem")
-                .WithBurst()
+                .WithoutBurst()
                 .ForEach((Entity entity, int entityInQueryIndex, int nativeThreadIndex, in TargetingData targetingData) => {
 
-                    if (targetingData.Target == Entity.Null) {
+                    if (!EntityManager.Exists(targetingData.Target) || targetingData.Target == Entity.Null) {
                         StatemachineUtil.TransitionFromPursuing(ecb, entityInQueryIndex, entity);
                     }
                     else {
                         StatemachineUtil.TransitionToPursuing(ecb, entityInQueryIndex, entity);
                     }
                     
-                }).Schedule();
+                }).Run();
             
             _entityCommandBuffer.AddJobHandleForProducer(Dependency);
 
