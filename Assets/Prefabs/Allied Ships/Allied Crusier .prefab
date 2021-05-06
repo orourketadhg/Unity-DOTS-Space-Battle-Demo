@@ -30076,7 +30076,7 @@ MonoBehaviour:
   Weight: 2
   Distance: 2
   Radius: 1.2
-  Jitter: 80
+  Jitter: 10
   Target:
     x: 0
     y: 0

@@ -127,7 +127,9 @@ namespace ie.TUDublin.GE2.Systems.Steering {
                         boid.Velocity *= ( 1.0f - ( boid.Damping * dt ) );
 
                     }
-                    
+
+                    boidData = boid;
+
                 }).ScheduleParallel();
             
         }
