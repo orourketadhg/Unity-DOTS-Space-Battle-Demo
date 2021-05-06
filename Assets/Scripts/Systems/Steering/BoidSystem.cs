@@ -16,7 +16,7 @@ namespace ie.TUDublin.GE2.Systems.Steering {
                     typeof(Translation),
                     typeof(Rotation),
                     typeof(BoidData),
-                    ComponentType.ReadOnly<ActiveSteeringData>(),
+                    ComponentType.ReadOnly<SteeringData>(),
                     ComponentType.ReadOnly<SeekData>(),
                     ComponentType.ReadOnly<ArriveData>(),
                     ComponentType.ReadOnly<PursueData>(),
@@ -40,7 +40,7 @@ namespace ie.TUDublin.GE2.Systems.Steering {
             var fleeHandle = GetComponentTypeHandle<FleeData>(true);
             var wanderHandle = GetComponentTypeHandle<WanderData>(true);
             var constrainHandle = GetComponentTypeHandle<ConstrainData>(true);
-            var steeringHandle = GetComponentTypeHandle<ActiveSteeringData>(true);
+            var steeringHandle = GetComponentTypeHandle<SteeringData>(true);
 
             var translationHandle = GetComponentTypeHandle<Translation>();
             var rotationHandle = GetComponentTypeHandle<Rotation>();

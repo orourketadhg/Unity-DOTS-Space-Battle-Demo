@@ -1,9 +1,8 @@
 ﻿using Unity.Entities;
 
 namespace ie.TUDublin.GE2.Components.Steering {
-
-    [GenerateAuthoringComponent]
-    public struct ActiveSteeringData : IComponentData {
+    
+    public struct SteeringData : IComponentData {
         public int Seek;
         public int Arrive;
         public int Pursue;

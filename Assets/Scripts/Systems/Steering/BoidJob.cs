@@ -19,7 +19,7 @@ namespace ie.TUDublin.GE2.Systems.Steering {
         [ReadOnly] public ComponentTypeHandle<FleeData> FleeHandle;
         [ReadOnly] public ComponentTypeHandle<ConstrainData> ConstrainHandle;
         [ReadOnly] public ComponentTypeHandle<WanderData> WanderHandle;
-        [ReadOnly] public ComponentTypeHandle<ActiveSteeringData> SteeringHandle;
+        [ReadOnly] public ComponentTypeHandle<SteeringData> SteeringHandle;
 
         public ComponentTypeHandle<Translation> TranslationHandle;
         public ComponentTypeHandle<Rotation> RotationHandle;
@@ -78,7 +78,7 @@ namespace ie.TUDublin.GE2.Systems.Steering {
 
         }
 
-        private static float3 CalculateForces(in SeekData seek, in ArriveData arrive, in PursueData pursue, in FleeData flee, in ConstrainData constrain, in WanderData wander, in BoidData boid, in ActiveSteeringData steering) {
+        private static float3 CalculateForces(in SeekData seek, in ArriveData arrive, in PursueData pursue, in FleeData flee, in ConstrainData constrain, in WanderData wander, in BoidData boid, in SteeringData steering) {
             var force = float3.zero;
 
             if (steering.Seek == 1) {

@@ -1,4 +1,5 @@
-﻿using Unity.Entities;
+﻿using ie.TUDublin.GE2.Components.Steering;
+using Unity.Entities;
 using UnityEngine;
 
 namespace ie.TUDublin.GE2.Components.Spaceship {
@@ -18,6 +19,7 @@ namespace ie.TUDublin.GE2.Components.Spaceship {
             dstManager.AddComponentData(entity, new HealthData() {Value = shipHealth});
             dstManager.AddComponentData(entity, new DamageData() {Value = collisionDamage});
             dstManager.AddComponentData(entity, new TargetingData() {Target = conversionSystem.GetPrimaryEntity(target), AttackDistance = attackRange});
+            dstManager.AddComponentData(entity, new SteeringData());
         }
     }
 

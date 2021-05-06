@@ -8,6 +8,7 @@ namespace ie.TUDublin.GE2.Components.Spaceship {
         public Entity Target;
         public float3 TargetPosition;
         public float AttackDistance;
+        
     }
 
 }
