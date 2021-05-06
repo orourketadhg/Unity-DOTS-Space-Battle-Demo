@@ -1,5 +1,4 @@
-﻿using ie.TUDublin.GE2.Components.Spaceship;
-using ie.TUDublin.GE2.Components.Statemachine;
+﻿using ie.TUDublin.GE2.Components.Statemachine;
 using ie.TUDublin.GE2.Components.Steering;
 using Unity.Entities;
 
