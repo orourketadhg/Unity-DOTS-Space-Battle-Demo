@@ -48472,7 +48472,6 @@ MonoBehaviour:
   shipHealth: 60
   collisionDamage: 60
   attackRange: 50
-  target: {fileID: 0}
 --- !u!114 &-2044792930790840812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48501,12 +48500,12 @@ MonoBehaviour:
     x: 0
     y: 0
     z: 0
-  MaxForce: 0
+  MaxForce: 15
   Speed: 0
-  MaxSpeed: 0
-  Mass: 0
-  Banking: 0
-  Damping: 0
+  MaxSpeed: 15
+  Mass: 1
+  Banking: 0.5
+  Damping: 0.01
 --- !u!114 &-1047200459763178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48579,7 +48578,7 @@ MonoBehaviour:
     x: 0
     y: 0
     z: 0
-  Weight: 1
+  Weight: 1.5
 --- !u!114 &2039133601817541345
 MonoBehaviour:
   m_ObjectHideFlags: 0

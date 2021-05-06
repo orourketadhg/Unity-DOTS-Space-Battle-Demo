@@ -22,10 +22,10 @@ namespace ie.TUDublin.GE2.Systems.Statemachine {
                 .ForEach((Entity entity, int entityInQueryIndex, int nativeThreadIndex, in DynamicBuffer<PursuerElementData> evasionBuffer) => {
 
                     if (evasionBuffer.IsEmpty) {
-                        StatemachineUtil.TransitionFromPursuing(ecb, entityInQueryIndex, entity);
+                        StatemachineUtil.TransitionFromFleeing(ecb, entityInQueryIndex, entity);
                     }
                     else {
-                        StatemachineUtil.TransitionToPursuing(ecb, entityInQueryIndex, entity);
+                        StatemachineUtil.TransitionFromFleeing(ecb, entityInQueryIndex, entity);
                     }
                     
                 }).Schedule();

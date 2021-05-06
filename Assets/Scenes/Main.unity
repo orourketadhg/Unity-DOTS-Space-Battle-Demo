@@ -408,7 +408,7 @@ MonoBehaviour:
   position: {x: 0, y: 0, z: -50}
   rotation: {x: 0, y: 0, z: 0}
   spawnArea: {x: 10, y: 10, z: 15}
-  shipCountMultiplier: 0
+  shipCountMultiplier: 1
   ships:
   - name: Crusier
     prefab: {fileID: 5380226125110603852, guid: 69182012566c48d4dbe07e72e55dbdb9, type: 3}
@@ -685,7 +685,7 @@ MonoBehaviour:
   position: {x: 0, y: 0, z: 50}
   rotation: {x: 0, y: 90, z: 0}
   spawnArea: {x: 20, y: 10, z: 10}
-  shipCountMultiplier: 0
+  shipCountMultiplier: 1
   ships:
   - name: Crusier
     prefab: {fileID: 2819899104848150308, guid: 7f706e973315b2240bd787ef47658aca, type: 3}
