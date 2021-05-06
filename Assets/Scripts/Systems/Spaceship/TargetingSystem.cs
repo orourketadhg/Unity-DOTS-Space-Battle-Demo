@@ -30,6 +30,21 @@ namespace ie.TUDublin.GE2.Systems.Spaceship {
 
                     pursueData.TargetVelocity = GetComponent<BoidData>(targetData.Target).Velocity;
                 }).ScheduleParallel();
+            
+            Entities
+                .WithName("PursuersSystem")
+                .WithBurst()
+                .ForEach((Entity entity, int entityInQueryIndex, int nativeThreadIndex, ref DynamicBuffer<PursuerElementData> pursuersBuffer) => {
+                    var copy = pursuersBuffer.AsNativeArray();
+                    for (int i = 0; i < copy.Length; i++) {
+                        var pursuer = copy[i];
+                        pursuer.PursuerPosition = GetComponent<Translation>(pursuer.PursuerEntity).Value;
+                        copy[i] = pursuer;
+                    }
+                    pursuersBuffer.Clear();
+                    pursuersBuffer.CopyFrom(copy);
+                }).ScheduleParallel();
+            
         }
     }
 

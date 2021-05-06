@@ -58,6 +58,18 @@ namespace ie.TUDublin.GE2.Systems.Spaceship {
                         }
                     }
                 }).ScheduleParallel();
+            
+            Entities
+                .WithName("PursuersCleanupSystem")
+                .WithBurst()
+                .ForEach((Entity entity, int entityInQueryIndex, int nativeThreadIndex, ref DynamicBuffer<PursuerElementData> pursuers) => {
+                    for (int index = pursuers.Length - 1; index >= 0; index--) {
+                        var pursuer = pursuers[index];
+                        if (pursuer.PursuerEntity == Entity.Null) {
+                            pursuers.RemoveAt(index);
+                        }
+                    }
+                }).ScheduleParallel();
                 
         }
         
