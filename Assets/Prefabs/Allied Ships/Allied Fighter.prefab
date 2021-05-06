@@ -9885,7 +9885,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shipHealth: 25
   collisionDamage: 25
-  attackRange: 50
+  attackRange: 100
+  distance: 10
+  radius: 5
 --- !u!114 &-3380234241729505352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10012,7 +10014,7 @@ MonoBehaviour:
     y: 0
     z: 0
   Weight: 0.05
-  Radius: 7.5
+  Radius: 5
   Origin:
     x: 0
     y: 0

@@ -7,6 +7,7 @@ using Unity.Entities;
 using Unity.Physics;
 using Unity.Physics.Systems;
 using Unity.Transforms;
+using UnityEngine;
 
 namespace ie.TUDublin.GE2.Systems.Spaceship {
 
@@ -34,7 +35,7 @@ namespace ie.TUDublin.GE2.Systems.Spaceship {
 
                     var radarPositionA = ltw.Position;
                     var radarPositionB = ltw.Position + ( ltw.Forward * radar.Distance );
-                    var radarHits = new NativeList<DistanceHit>(Allocator.TempJob);
+                    var radarHits = new NativeList<DistanceHit>(Allocator.Temp);
                     var radarFilter = new CollisionFilter() {
                         BelongsTo = ~0u,
                         CollidesWith = ( 1u << 5 ),
@@ -42,34 +43,26 @@ namespace ie.TUDublin.GE2.Systems.Spaceship {
                     };
 
                     if (physicsWorld.OverlapCapsule(radarPositionA, radarPositionB, radar.Radius, ref radarHits, radarFilter)) {
-                        foreach (var entityHit in radarHits.Select(hit => hit.Entity)) {
+                        for (int i = 0; i < radarHits.Length; i++) {
+                            
+                            var entityHit = radarHits[i].Entity;
                             if (HasComponent<AlliedTag>(entity) && HasComponent<EnemyTag>(entityHit)) {
-                                GetBuffer<PursuerElementData>(entityHit).Add(new PursuerElementData() {PursuerEntity = entityHit});
+                                // GetBuffer<PursuerElementData>(entityHit).Add(new PursuerElementData() {PursuerEntity = entityHit});
                                 targetingData.Target = entityHit;
                                 break;
                             }
-                            
+
                             if (HasComponent<AlliedTag>(entityHit) && HasComponent<EnemyTag>(entity)) {
-                                GetBuffer<PursuerElementData>(entityHit).Add(new PursuerElementData() {PursuerEntity = entityHit});
+                                // GetBuffer<PursuerElementData>(entityHit).Add(new PursuerElementData() {PursuerEntity = entityHit});
                                 targetingData.Target = entityHit;
                                 break;
                             }
                         }
                     }
-                }).ScheduleParallel();
-            
-            // Entities
-            //     .WithName("PursuersCleanupSystem")
-            //     .WithBurst()
-            //     .ForEach((Entity entity, int entityInQueryIndex, int nativeThreadIndex, ref DynamicBuffer<PursuerElementData> pursuers) => {
-            //         for (int index = pursuers.Length - 1; index >= 0; index--) {
-            //             var pursuer = pursuers[index];
-            //             if (pursuer.PursuerEntity == Entity.Null) {
-            //                 pursuers.RemoveAt(index);
-            //             }
-            //         }
-            //     }).ScheduleParallel();
-                
+                    else {
+                        Debug.Log("Failure");
+                    }
+                }).Schedule();
         }
         
     }
