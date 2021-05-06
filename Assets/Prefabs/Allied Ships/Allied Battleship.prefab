@@ -19876,7 +19876,7 @@ MonoBehaviour:
     x: 0
     y: 0
     z: 0
-  Weight: 1
+  Weight: 1.5
   TargetVelocity:
     x: 0
     y: 0
@@ -19897,7 +19897,7 @@ MonoBehaviour:
     x: 0
     y: 0
     z: 0
-  Weight: 1.5
+  Weight: 1
 --- !u!114 &-379806684155908446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19914,7 +19914,7 @@ MonoBehaviour:
     x: 0
     y: 0
     z: 0
-  Weight: 0.05
+  Weight: 0.1
   Radius: 5
   Origin:
     x: 0

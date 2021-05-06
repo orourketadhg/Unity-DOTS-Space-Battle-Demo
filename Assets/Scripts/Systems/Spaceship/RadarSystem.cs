@@ -22,7 +22,7 @@ namespace ie.TUDublin.GE2.Systems.Spaceship {
         protected override void OnUpdate() {
 
             var physicsWorld = _buildPhysicsWorld.PhysicsWorld;
-
+            
             Entities
                 .WithName("RadarSystem")
                 .WithBurst()
@@ -47,13 +47,13 @@ namespace ie.TUDublin.GE2.Systems.Spaceship {
                             
                             var entityHit = radarHits[i].Entity;
                             if (HasComponent<AlliedTag>(entity) && HasComponent<EnemyTag>(entityHit)) {
-                                // GetBuffer<PursuerElementData>(entityHit).Add(new PursuerElementData() {PursuerEntity = entityHit});
+                                GetBuffer<PursuerElementData>(entityHit).Add(new PursuerElementData() {PursuerEntity = entityHit});
                                 targetingData.Target = entityHit;
                                 break;
                             }
 
                             if (HasComponent<AlliedTag>(entityHit) && HasComponent<EnemyTag>(entity)) {
-                                // GetBuffer<PursuerElementData>(entityHit).Add(new PursuerElementData() {PursuerEntity = entityHit});
+                                GetBuffer<PursuerElementData>(entityHit).Add(new PursuerElementData() {PursuerEntity = entityHit});
                                 targetingData.Target = entityHit;
                                 break;
                             }
