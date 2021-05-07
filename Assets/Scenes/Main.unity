@@ -228,7 +228,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &52041560
 RectTransform:
   m_ObjectHideFlags: 0
@@ -374,9 +374,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c47830204b1544868b5b8c1058576ac7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alliedShipsRemaining: 0
-  enemyShipsRemaining: 0
-  winThreshold: 25
+  alliedShipsRemaining: 100
+  enemyShipsRemaining: 100
+  winThreshold: 40
+  resetTime: 3
   alliedShipCount: {fileID: 1194081637}
   enemyShipCount: {fileID: 689076184}
   winnerText: {fileID: 52041561}
