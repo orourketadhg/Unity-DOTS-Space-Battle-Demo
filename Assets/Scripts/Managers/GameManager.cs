@@ -8,6 +8,9 @@ using UnityEngine.SceneManagement;
 
 namespace ie.TUDublin.GE2.Managers {
 
+    /// <summary>
+    /// Manager for the progress of the simulation
+    /// </summary>
     public class GameManager : MonoBehaviour {
 
         [SerializeField] [Min(0)] private int alliedShipsRemaining = 100;
@@ -30,22 +33,27 @@ namespace ie.TUDublin.GE2.Managers {
         private float _reloadTime;
 
         private void Start() {
+            // get the entity manager
             _manager = World.DefaultGameObjectInjectionWorld.EntityManager;
             
+            // create queries for enemy and allied ships
             _alliedShipQuery = _manager.CreateEntityQuery(ComponentType.ReadOnly<AlliedTag>());
             _enemyShipQuery = _manager.CreateEntityQuery(ComponentType.ReadOnly<EnemyTag>());
         }
 
         private void Update() {
+            // get all allied and enemy ships
             var alliedShips = _alliedShipQuery.ToEntityArray(Allocator.Temp);
             var enemyShips = _enemyShipQuery.ToEntityArray(Allocator.Temp);
             
+            // update ship counts
             alliedShipsRemaining = alliedShips.Length;
             enemyShipsRemaining = enemyShips.Length;
 
             alliedShipCount.text = "Allied Ships:" + alliedShipsRemaining;
             enemyShipCount.text = "Enemy Ships:" + enemyShipsRemaining;
 
+            // check if a team has won the battle
             if (alliedShipsRemaining <= winThreshold) {
                 winnerText.gameObject.SetActive(true);
                 winnerText.text = "Allies Win!";
@@ -57,12 +65,14 @@ namespace ie.TUDublin.GE2.Managers {
                 _isFightOver = true;
             }
 
+            // start reload timer
             if (_isFightOver && !_isReloadSet) {
                 _manager.DestroyAndResetAllEntities();
                 _isReloadSet = true;
                 _reloadTime = Time.timeSinceLevelLoad;
             }
 
+            // reload scene
             if (_isReloadSet && Time.timeSinceLevelLoad >= resetTime + _reloadTime) {
                 SceneManager.LoadScene("Scenes/Main");
             }
