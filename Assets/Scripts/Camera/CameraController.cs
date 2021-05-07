@@ -21,7 +21,7 @@ namespace ie.TUDublin.GE2.Camera {
 
         private void Update() {
 
-            if (Input.GetKey(KeyCode.Mouse0)) {
+            if (Input.GetKeyDown(KeyCode.Space)) {
                 CycleToNextCamera();
             }
             

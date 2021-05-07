@@ -889,6 +889,10 @@ GameObject:
   - component: {fileID: 861358300}
   - component: {fileID: 861358299}
   - component: {fileID: 861358298}
+  - component: {fileID: 861358304}
+  - component: {fileID: 861358303}
+  - component: {fileID: 861358302}
+  - component: {fileID: 861358301}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -961,6 +965,63 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 12.49, y: 90, z: 0}
+--- !u!114 &861358301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 861358297}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 118677754a884fc992083644c17752dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panningSettings:
+  - name: Birds Eye View
+    position: {x: 0, y: 0, z: 0}
+    offset: {x: 0, y: -50, z: 0}
+    speed: 0
+  - name: Middle View
+    position: {x: 0, y: 0, z: 0}
+    offset: {x: 0, y: 0, z: 50}
+    speed: 1.5
+--- !u!114 &861358302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 861358297}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ea1fc19b6184b0ca2dc53762c1bb648, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &861358303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 861358297}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 850abc1ec552458495017200ffe370fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &861358304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 861358297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b8d91c1fc8da8646879296987d9eae0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1194081635
 GameObject:
   m_ObjectHideFlags: 0

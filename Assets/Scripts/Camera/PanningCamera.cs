@@ -25,7 +25,7 @@ namespace ie.TUDublin.GE2.Camera {
 
             transform.LookAt(currentSettings.position);
 
-            if (Input.GetKey(KeyCode.Space)) {
+            if (Input.GetKeyDown(KeyCode.Mouse0)) {
                 _panningIndex += 1;
                 _panningIndex %= panningSettings.Count;
             }
