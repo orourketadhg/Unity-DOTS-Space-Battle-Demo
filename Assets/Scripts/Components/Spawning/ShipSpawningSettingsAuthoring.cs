@@ -6,6 +6,9 @@ using UnityEngine;
 
 namespace ie.TUDublin.GE2.Components.Spawning {
 
+    /// <summary>
+    /// Authoring Class for ship spawning
+    /// </summary>
     public class ShipSpawningSettingsAuthoring : MonoBehaviour, IConvertGameObjectToEntity, IDeclareReferencedPrefabs {
 
         [SerializeField] private Vector3 position;
@@ -37,6 +40,9 @@ namespace ie.TUDublin.GE2.Components.Spawning {
         public void DeclareReferencedPrefabs(List<GameObject> referencedPrefabs) => referencedPrefabs.AddRange(ships.Select(ship => ship.prefab));
     }
 
+    /// <summary>
+    /// Details about a ship that can be spawned
+    /// </summary>
     [System.Serializable]
     public class ShipSettings {
         public string name;
@@ -44,6 +50,9 @@ namespace ie.TUDublin.GE2.Components.Spawning {
         public int2 numberOfShips;
     }
 
+    /// <summary>
+    /// Settings about the ship spawning positions 
+    /// </summary>
     public struct ShipSpawningSettingsData : IComponentData {
         public float3 position;
         public float3 rotation; 
@@ -51,6 +60,9 @@ namespace ie.TUDublin.GE2.Components.Spawning {
         public float shipCountMultiplier;
     }
 
+    /// <summary>
+    /// Buffer Element data about ships a spawner can spawn
+    /// </summary>
     public struct ShipSpawnElement : IBufferElementData {
         public Entity prefab;
         public int2 numberOfShips;

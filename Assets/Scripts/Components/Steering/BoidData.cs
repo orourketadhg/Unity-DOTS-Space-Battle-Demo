@@ -3,6 +3,9 @@ using Unity.Mathematics;
 
 namespace ie.TUDublin.GE2.Components.Steering {
 
+    /// <summary>
+    /// Boid details about a ship
+    /// </summary>
     [GenerateAuthoringComponent]
     public struct BoidData : IComponentData {
         public float3 Velocity;

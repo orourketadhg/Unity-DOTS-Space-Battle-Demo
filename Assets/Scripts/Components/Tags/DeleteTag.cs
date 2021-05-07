@@ -2,7 +2,9 @@
 
 namespace ie.TUDublin.GE2.Components.Tags {
 
-    public struct DeleteTag : IComponentData {
-    }
+    /// <summary>
+    /// Tag to delete a entity
+    /// </summary>
+    public struct DeleteTag : IComponentData { }
 
 }

@@ -2,7 +2,10 @@
 using Unity.Mathematics;
 
 namespace ie.TUDublin.GE2.Components.Steering {
-
+    
+    /// <summary>
+    /// Wander steering behaviour details 
+    /// </summary>
     [GenerateAuthoringComponent]
     public struct WanderData : IComponentData {
         public float3 Force;

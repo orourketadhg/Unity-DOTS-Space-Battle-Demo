@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace ie.TUDublin.GE2.Components.Spaceship {
 
+    /// <summary>
+    /// Authoring Class for Laser Gun
+    /// </summary>
     public class LaserGunDataAuthoring : MonoBehaviour, IConvertGameObjectToEntity, IDeclareReferencedPrefabs {
 
         [SerializeField] private GameObject laserPrefab;
@@ -27,6 +30,9 @@ namespace ie.TUDublin.GE2.Components.Spaceship {
         public void DeclareReferencedPrefabs(List<GameObject> referencedPrefabs) => referencedPrefabs.Add(laserPrefab);
     }
 
+    /// <summary>
+    /// Static Settings for a laser gun 
+    /// </summary>
     public struct LaserGunSettingsData : IComponentData {
         public float FiringRate;
         public Entity LaserPrefab;
@@ -34,6 +40,9 @@ namespace ie.TUDublin.GE2.Components.Spaceship {
         public float ProjectileLifetime;
     }
 
+    /// <summary>
+    /// Dynamic settings for a laser gun
+    /// </summary>
     public struct LaserGunInternalSettingsData : IComponentData {
         public float TimeOfLastFire;
     }

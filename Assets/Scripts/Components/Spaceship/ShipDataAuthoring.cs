@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace ie.TUDublin.GE2.Components.Spaceship {
 
+    /// <summary>
+    /// Authoring class for components on a ship
+    /// </summary>
     public class ShipDataAuthoring : MonoBehaviour, IConvertGameObjectToEntity {
 
         [Header("Ship Properties")]
