@@ -29,3 +29,5 @@ The simulation will start out in empty space with no life around. following this
 ![Battle](https://i.imgur.com/jMOcmJv.png)
 
 As the battle occurs each space ship will be able locked onto a specfic target that they will have to destroy. when that target is destroyed they will find another spaceship to attack. The battle ends when one force loses all their ships. After this point the last ship(s) will space jump out of view, and the scene will reload starting again.
+
+[![DOTS Space Battle](http://i3.ytimg.com/vi/Zfc9NKxJ180/maxresdefault.jpg)](https://youtu.be/Zfc9NKxJ180)]
