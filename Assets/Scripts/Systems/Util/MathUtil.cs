@@ -3,9 +3,15 @@ using Unity.Mathematics;
 
 namespace ie.TUDublin.GE2.Systems.Util {
 
+    /// <summary>
+    /// Math utility functions 
+    /// </summary>
     [BurstCompile]
     public static class MathUtil {
 
+        /// <summary>
+        /// Calculate random position inside a unit sphere 
+        /// </summary>
         public  static float3 InsideUnitSphere(ref Random random) {
             float t = math.PI * random.NextFloat();
             float v = random.NextFloat();
@@ -20,6 +26,9 @@ namespace ie.TUDublin.GE2.Systems.Util {
             return new float3(x, y, z);
         }
         
+        /// <summary>
+        /// Calculate random position on a unit sphere 
+        /// </summary>
         public static float3 OnUnitSphere(ref Random random) {
 
             float a = 2 * math.PI * random.NextFloat();
@@ -31,17 +40,10 @@ namespace ie.TUDublin.GE2.Systems.Util {
             
             return new float3(x, y, z);
         }
-
-        public static float Float3Distance(float3 v, float3 w) {
-            float x = math.pow(( v.x - w.x ), 2);
-            float y = math.pow(( v.y - w.y ), 2);
-            float z = math.pow(( v.z - w.z ), 2);
-
-            float a = math.sqrt(x + y + z);
-            
-            return math.abs(a);
-        }
-
+        
+        /// <summary>
+        /// Calculate the clamped magnitude 
+        /// </summary>
         public static float3 ClampMagnitude(float3 vector, float maxLength) {
             float sqrLength = math.lengthsq(vector);
 

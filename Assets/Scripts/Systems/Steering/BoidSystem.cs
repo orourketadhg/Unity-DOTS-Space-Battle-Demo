@@ -6,6 +6,9 @@ using Unity.Transforms;
 
 namespace ie.TUDublin.GE2.Systems.Steering {
 
+    /// <summary>
+    /// System to calculate and apply forces from steering behaviours
+    /// </summary>
     [UpdateAfter(typeof(SteeringForcesSystem))]
     public class BoidSystem : SystemBase {
 
@@ -13,6 +16,7 @@ namespace ie.TUDublin.GE2.Systems.Steering {
 
         protected override void OnCreate() {
 
+            // Query to get components for Boid Job
             var boidQueryDesc = new EntityQueryDesc() {
                 Any = new[] {
                     typeof(Translation),
@@ -72,54 +76,66 @@ namespace ie.TUDublin.GE2.Systems.Steering {
             
                     var boid = boidData;
                     
+                    // accumulate forces
+                    
                     var force = float3.zero;
                     
+                    // calculate seek forces
                     if (steering.Seek == 1) {
                         var seek = GetComponent<SeekData>(entity);
                         force += seek.Force * seek.Weight;
                         force = MathUtil.ClampMagnitude(force, boid.MaxForce);
                     }
             
+                    // calculate arrive forces
                     if (steering.Arrive == 1) {
                         var arrive = GetComponent<ArriveData>(entity);
                         force += arrive.Force * arrive.Weight;
                         force = MathUtil.ClampMagnitude(force, boid.MaxForce);
                     }
             
+                    // calculate pursue forces
                     if (steering.Pursue == 1) {
                         var pursue = GetComponent<PursueData>(entity);
                         force += pursue.Force * pursue.Weight;
                         force = MathUtil.ClampMagnitude(force, boid.MaxForce);
                     }
             
+                    // calculate flee forces
                     if (steering.Flee == 1) {
                         var flee = GetComponent<FleeData>(entity);
                         force += flee.Force * flee.Weight;
                         force = MathUtil.ClampMagnitude(force, boid.MaxForce);
                     }
             
+                    // calculate constrain forces
                     if (steering.Constrain == 1) {
                         var constrain = GetComponent<ConstrainData>(entity);
                         force += constrain.Force * constrain.Weight;
                         force = MathUtil.ClampMagnitude(force, boid.MaxForce);
                     }
             
+                    // calculate wander forces
                     if (steering.Wander == 1) {
                         var wander = GetComponent<WanderData>(entity);
                         force += wander.Force * wander.Weight;
                         force = MathUtil.ClampMagnitude(force, boid.MaxForce);
                     }
             
+                    // apply boid weight
                     force *= boid.Weight;
                     boid.Force = MathUtil.ClampMagnitude(force, boid.MaxForce);
                     
+                    // calculate velocity based on forces 
                     var tempAcceleration = (boid.Force * boid.Weight) * (1.0f / boid.Mass);
                     tempAcceleration.y *= boidData.VerticalLimiter;
                     boid.Acceleration = math.lerp(boid.Acceleration, tempAcceleration, dt);
                     
+                    // limit vertical spinning
                     boid.Velocity += boid.Acceleration * dt;
                     boid.Velocity = MathUtil.ClampMagnitude(boid.Velocity, boid.MaxSpeed);
-            
+                    
+                    // apply velocity to boid
                     boid.Speed = math.length(boid.Velocity);
                     if (boid.Speed > 0) {
                     
@@ -129,9 +145,9 @@ namespace ie.TUDublin.GE2.Systems.Steering {
             
                         translation.Value += boid.Velocity * dt;
                         boid.Velocity *= ( 1.0f - ( boid.Damping * dt ) );
-            
                     }
             
+                    // update boid data
                     boidData = boid;
             
                 }).ScheduleParallel();

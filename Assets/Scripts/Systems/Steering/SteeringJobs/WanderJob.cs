@@ -9,6 +9,9 @@ using Random = Unity.Mathematics.Random;
 
 namespace ie.TUDublin.GE2.Systems.Steering.SteeringJobs {
 
+    /// <summary>
+    /// Job to calculate Arrive steering forces
+    /// </summary>
     [BurstCompile]
     public struct WanderJob : IJobEntityBatch {
         
@@ -16,12 +19,14 @@ namespace ie.TUDublin.GE2.Systems.Steering.SteeringJobs {
         [NativeDisableParallelForRestriction] public NativeArray<Random> RandomArray;
         public float DeltaTime;
         
+        // Component Handlers
         [ReadOnly] public ComponentTypeHandle<Translation> TranslationHandle;
         [ReadOnly] public ComponentTypeHandle<Rotation> RotationHandle;
         
         public ComponentTypeHandle<WanderData> WanderHandle;
 
         public void Execute(ArchetypeChunk batchInChunk, int batchIndex) {
+            // Get component arrays from batch
             var wanderData = batchInChunk.GetNativeArray(WanderHandle);
             var translationData = batchInChunk.GetNativeArray(TranslationHandle);
             var rotationData = batchInChunk.GetNativeArray(RotationHandle);
@@ -29,10 +34,12 @@ namespace ie.TUDublin.GE2.Systems.Steering.SteeringJobs {
             var random = RandomArray[_nativeThreadIndex];
 
             for (int i = 0; i < batchInChunk.Count; i++) {
+                // get entities components and data
                 var wander = wanderData[i];
                 var position = translationData[i].Value;
                 var rotation = rotationData[i].Value;
                 
+                // calculate wander forces
                 var displacement = wander.Jitter * random.NextFloat3Direction() * DeltaTime;
                 wander.Target += displacement;
                 wander.Target = math.normalize(wander.Target);
@@ -43,6 +50,7 @@ namespace ie.TUDublin.GE2.Systems.Steering.SteeringJobs {
                 wander.WorldTarget = math.mul(rotation, wander.LocalTarget) + position;
                 wander.Force = ( wander.WorldTarget - position );
 
+                // return data
                 wanderData[i] = wander;
             }
             

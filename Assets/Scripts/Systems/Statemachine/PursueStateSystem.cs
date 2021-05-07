@@ -5,6 +5,9 @@ using Unity.Transforms;
 
 namespace ie.TUDublin.GE2.Systems.Statemachine {
     
+    /// <summary>
+    /// System to update a ships pursuing state
+    /// </summary>
     public class PursueStateSystem : SystemBase {
 
         private EndSimulationEntityCommandBufferSystem _entityCommandBuffer;
@@ -22,6 +25,7 @@ namespace ie.TUDublin.GE2.Systems.Statemachine {
                 .WithoutBurst()
                 .ForEach((Entity entity, int entityInQueryIndex, int nativeThreadIndex, in TargetingData targetingData) => {
 
+                    // depending on if a target exists, update the pursuing state 
                     if (!EntityManager.Exists(targetingData.Target) || targetingData.Target == Entity.Null) {
                         StatemachineUtil.TransitionFromPursuing(ecb, entityInQueryIndex, entity);
                     }

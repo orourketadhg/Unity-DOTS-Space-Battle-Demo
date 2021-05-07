@@ -6,6 +6,9 @@ using Unity.Physics;
 
 namespace ie.TUDublin.GE2.Systems.Physics {
 
+    /// <summary>
+    /// Trigger Job to inflict damage on an entities health
+    /// </summary>
     [BurstCompile]
     public struct DamageTriggerJob : ITriggerEventsJob {
 

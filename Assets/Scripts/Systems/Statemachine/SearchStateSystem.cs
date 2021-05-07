@@ -5,6 +5,9 @@ using Unity.Entities;
 
 namespace ie.TUDublin.GE2.Systems.Statemachine {
 
+    /// <summary>
+    /// System to update the searching state of a ship
+    /// </summary>
     public class SearchStateSystem : SystemBase {
         
         private EndSimulationEntityCommandBufferSystem _entityCommandBuffer;
@@ -23,6 +26,7 @@ namespace ie.TUDublin.GE2.Systems.Statemachine {
                 .WithNone<FleeState>()
                 .ForEach((Entity entity, int entityInQueryIndex, int nativeThreadIndex, in TargetingData targetingData) => {
 
+                    // check if the ship has a target, and update searching state accordingly 
                     if (targetingData.Target == Entity.Null) {
                         StatemachineUtil.TransitionToSearching(ecb, entityInQueryIndex, entity);
                     }

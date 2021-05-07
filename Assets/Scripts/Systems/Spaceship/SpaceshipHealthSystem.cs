@@ -5,6 +5,9 @@ using Unity.Entities;
 
 namespace ie.TUDublin.GE2.Systems.Spaceship {
 
+    /// <summary>
+    /// Ship to destroy entities based on their health
+    /// </summary>
     public class SpaceshipHealthSystem : SystemBase {
 
         private EndSimulationEntityCommandBufferSystem _entityCommandBufferSystem;

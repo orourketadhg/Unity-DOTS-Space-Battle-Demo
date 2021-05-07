@@ -7,6 +7,9 @@ using Unity.Transforms;
 
 namespace ie.TUDublin.GE2.Systems.Spaceship {
 
+    /// <summary>
+    /// System to control the spawning of laser projectiles from a ships laser gun
+    /// </summary>
     public class LaserFiringSystem : SystemBase {
 
         private EndSimulationEntityCommandBufferSystem _entityCommandBufferSystem;
@@ -26,11 +29,14 @@ namespace ie.TUDublin.GE2.Systems.Spaceship {
                 .WithAll<AttackingState>()
                 .ForEach((Entity entity, int entityInQueryIndex, ref LaserGunInternalSettingsData gunInternalSettingsData, in LaserGunSettingsData gunSettingsData, in LocalToWorld origin) => {
                     
+                    // check time interval between firing
                     if (time >= gunInternalSettingsData.TimeOfLastFire + gunSettingsData.FiringRate) {
                         gunInternalSettingsData.TimeOfLastFire = time;
                         
+                        // create projectile instance
                         var instance = ecb.Instantiate(entityInQueryIndex, gunSettingsData.LaserPrefab);
 
+                        // calculate projectile data
                         var instanceTranslation = new Translation() {Value = origin.Position + (origin.Forward * 0.1f)};
                         var instanceRotation = new Rotation() {Value = origin.Rotation};
                         var instanceVelocity = new PhysicsVelocity() {
@@ -44,6 +50,7 @@ namespace ie.TUDublin.GE2.Systems.Spaceship {
                             ProjectileLifetime = gunSettingsData.ProjectileLifetime
                         };
                         
+                        // set projectile data
                         ecb.SetComponent(entityInQueryIndex, instance, instanceTranslation);
                         ecb.SetComponent(entityInQueryIndex, instance, instanceRotation);
                         ecb.SetComponent(entityInQueryIndex, instance, instanceVelocity);

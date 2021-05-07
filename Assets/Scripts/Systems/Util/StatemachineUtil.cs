@@ -4,6 +4,9 @@ using Unity.Entities;
 
 namespace ie.TUDublin.GE2.Systems.Util {
 
+    /// <summary>
+    /// Utility functions for statemachine
+    /// </summary>
     [BurstCompile]
     public static class StatemachineUtil {
 

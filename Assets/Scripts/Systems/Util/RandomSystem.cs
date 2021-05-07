@@ -6,6 +6,9 @@ using Unity.Mathematics;
 
 namespace ie.TUDublin.GE2.Systems.Util {
 
+    /// <summary>
+    /// Threaded Random System
+    /// </summary>
     [UpdateInGroup(typeof(InitializationSystemGroup))]
     public class RandomSystem : SystemBase {
 
@@ -25,6 +28,7 @@ namespace ie.TUDublin.GE2.Systems.Util {
         }
 
         protected override void OnUpdate() {
+            
         }
 
         protected override void OnDestroy() {

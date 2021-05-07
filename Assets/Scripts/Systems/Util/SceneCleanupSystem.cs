@@ -4,6 +4,9 @@ using Unity.Entities;
 
 namespace ie.TUDublin.GE2.Systems.Util {
 
+    /// <summary>
+    /// System to cleanup the scene
+    /// </summary>
     public class SceneCleanupSystem : SystemBase {
 
         private EndSimulationEntityCommandBufferSystem _entityCommandBufferSystem;
@@ -17,6 +20,7 @@ namespace ie.TUDublin.GE2.Systems.Util {
             var ecb = _entityCommandBufferSystem.CreateCommandBuffer().AsParallelWriter();
             float timeElapsed = (float) Time.ElapsedTime;
             
+            // remove entities with delete Tag
             Entities
                 .WithName("DeleteTagCleanup")
                 .WithBurst()
@@ -25,6 +29,7 @@ namespace ie.TUDublin.GE2.Systems.Util {
                     ecb.DestroyEntity(entityInQueryIndex, entity);
                 }).ScheduleParallel();
             
+            // remove bullets after a certain amount of time
             Entities
                 .WithName("BulletLifetimeCleanup")
                 .WithBurst()
@@ -34,6 +39,7 @@ namespace ie.TUDublin.GE2.Systems.Util {
                     }
                 }).ScheduleParallel();
 
+            // cleanup bullets that have hit something
             Entities
                 .WithName("BulletHealthCleanup")
                 .WithBurst()

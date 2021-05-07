@@ -11,6 +11,9 @@ using UnityEngine;
 
 namespace ie.TUDublin.GE2.Systems.Spaceship {
 
+    /// <summary>
+    /// system to detect targets
+    /// </summary>
     public class RadarSystem : SystemBase {
 
         private BuildPhysicsWorld _buildPhysicsWorld;
@@ -29,10 +32,12 @@ namespace ie.TUDublin.GE2.Systems.Spaceship {
                 .WithAll<SearchState>()
                 .ForEach((Entity entity, int entityInQueryIndex, int nativeThreadIndex, ref TargetingData targetingData, in RadarData radar, in LocalToWorld ltw) => {
 
+                    // check entity has a target
                     if (targetingData.Target != Entity.Null) {
                         return;
                     }
 
+                    // calculate overlap parameters
                     var radarPositionA = ltw.Position;
                     var radarPositionB = ltw.Position + ( ltw.Forward * radar.Distance );
                     var radarHits = new NativeList<DistanceHit>(Allocator.Temp);
@@ -42,9 +47,11 @@ namespace ie.TUDublin.GE2.Systems.Spaceship {
                         GroupIndex = 0
                     };
 
+                    // cast overlap
                     if (physicsWorld.OverlapCapsule(radarPositionA, radarPositionB, radar.Radius, ref radarHits, radarFilter)) {
                         for (int i = 0; i < radarHits.Length; i++) {
                             
+                            // check found targets are on the opposing team
                             var entityHit = radarHits[i].Entity;
                             if (HasComponent<AlliedTag>(entity) && HasComponent<EnemyTag>(entityHit)) {
                                 GetBuffer<PursuerElementData>(entityHit).Add(new PursuerElementData() {PursuerEntity = entityHit});

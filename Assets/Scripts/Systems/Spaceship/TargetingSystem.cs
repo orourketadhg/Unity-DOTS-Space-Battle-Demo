@@ -5,10 +5,14 @@ using Unity.Transforms;
 
 namespace ie.TUDublin.GE2.Systems.Spaceship {
     
+    /// <summary>
+    /// System to update position data about targets
+    /// </summary>
     public class TargetingSystem : SystemBase {
 
         protected override void OnUpdate() {
             
+            // Update target positions
             Entities
                 .WithName("TargetingSystem")
                 .WithoutBurst()
@@ -21,6 +25,7 @@ namespace ie.TUDublin.GE2.Systems.Spaceship {
                     targetData.TargetPosition = GetComponent<Translation>(targetData.Target).Value;
                 }).Run();
 
+            // Get targets velocity for pursing 
             Entities
                 .WithName("PursuingSystem")
                 .WithoutBurst()
@@ -32,6 +37,7 @@ namespace ie.TUDublin.GE2.Systems.Spaceship {
                     pursueData.TargetVelocity = GetComponent<BoidData>(targetData.Target).Velocity;
                 }).Run();
             
+            // update positions of pursuers on ship
             Entities
                 .WithName("PursuingCleanupSystem")
                 .WithoutBurst()

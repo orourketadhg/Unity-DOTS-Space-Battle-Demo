@@ -4,6 +4,9 @@ using Unity.Entities;
 
 namespace ie.TUDublin.GE2.Systems.Statemachine {
 
+    /// <summary>
+    /// System to update enabled steering behaviours based on ships states
+    /// </summary>
     public class StatemachineSystem : SystemBase {
         
         protected override void OnUpdate() {
