@@ -8,7 +8,7 @@ Class Group: DT228
 
 ## Background
 
-This project will utilise Unitys Data Oriented Technology Stack (DOTS) to create a simulated space battle. This project will use several steering behaviours to control the movement of space ships in the battle. This project will use several additional DOTS technologies to improve performace, including DOTS Physics to simulate physics on the spaceship entities, and the Universal Rendering Pipeline (URP) for additional visual effects.
+This project will utilise Unitys Data Oriented Technology Stack (DOTS) to create a simulated space battle. This project will use several steering behaviours to control the movement of space ships in the battle. This project will use several additional DOTS technologies to improve performace, including DOTS Physics to simulate physics on the spaceship entities.
 
 The project will have the ability to switch between several different camera viewpoints:
 * Birds eye view
